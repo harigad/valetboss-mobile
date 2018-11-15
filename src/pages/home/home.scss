@@ -1,0 +1,27 @@
+page-home {
+  background: #727272;
+  background: -moz-linear-gradient(top, #727272 0%, #151515 100%);
+  background: -webkit-linear-gradient(top, #727272 0%,#151515 100%);
+  background: linear-gradient(to bottom, #727272 0%,#151515 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#727272', endColorstr='#151515',GradientType=0 );
+  text-align: center;
+  padding: 20px;
+  letter-spacing: 1.2px;
+  label{
+    color: white;
+
+  }
+  img{
+    max-width: 280px;
+    height: auto;
+  }
+  .phone {
+    margin-top: 10px;
+    background: #353535;
+    color: white;
+    input{
+      text-align: center;
+      font-size: 22px;
+    }
+  }
+}

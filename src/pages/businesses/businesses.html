@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title> Hotel ZaZa </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-menu type="overlay" [content]="content">
+  <ion-header>
+    <ion-toolbar> <ion-title> Hotel ZaZa </ion-title> </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item> aaaa </ion-item>
+      <ion-item [navPush]="pushPage1">Buisness</ion-item>
+      <ion-item [navPush]="pushPage2">Pingvalet</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content #content padding>
+  <div
+    (click)="pushBis(business)"
+    *ngFor="let business of businesses"
+    class="clutch-bar"
+  >
+    <h3>Clutch Bar & Grill</h3>
+    <span>Parked : 44</span> <span>Ready to Pick Up: 4</span>
+    <span>Online since 09/11/2018 6:15 PM </span>
+  </div>
+</ion-content>

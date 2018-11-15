@@ -1,0 +1,5 @@
+<div class="cell" [ngClass]="{ busy: cell.busy }">
+  <div class="cell-count">{{ ind + 1 }}</div>
+  <div class="cell-date">{{ cell.time | amDateFormat: "LT" }}</div>
+  <div class="identify">{{ cell.identifier }}</div>
+</div>

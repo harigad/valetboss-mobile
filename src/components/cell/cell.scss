@@ -1,0 +1,36 @@
+.cell {
+  float: left;
+  width: 24%;
+  margin: 0.5%;
+  display: inline-block;
+  background: #0f7bca;
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 4px;
+  color: #fff;
+  margin-bottom: 4px;
+  .cell-count {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.cell.busy {
+  background: gray;
+}
+
+@media only screen and (min-width: 667px) {
+  .cell {
+    width: 23%;
+    margin: 1%;
+    .cell-date {
+      letter-spacing: 4px;
+      font-size: 15px;
+      padding: 4px 0;
+    }
+    .identify {
+      letter-spacing: 4px;
+      font-size: 15px;
+    }
+  }
+}

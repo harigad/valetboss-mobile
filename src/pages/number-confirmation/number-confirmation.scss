@@ -1,0 +1,39 @@
+page-number-confirmation {
+  ion-content {
+    background: #727272;
+    background: -moz-linear-gradient(top, #727272 0%, #151515 100%);
+    background: -webkit-linear-gradient(top, #727272 0%, #151515 100%);
+    background: linear-gradient(to bottom, #727272 0%, #151515 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#727272', endColorstr='#151515', GradientType=0);
+    text-align: center;
+  }
+
+  label{
+    color: white;
+    display: block;
+    margin: 8px;
+  }
+
+  label.error{
+    color: #f53d3d !important;
+  }
+
+  .pin {
+    margin-top: 10px;
+    background: #353535;
+    color: white;
+    width: 48px;
+    display: inline-block;
+    margin: 0 8px;
+    input{
+      text-align: center;
+      font-size: 22px;
+    }
+  }
+
+  img{
+    max-width: 280px;
+    height: auto;
+  }
+
+}

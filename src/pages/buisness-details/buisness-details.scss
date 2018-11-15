@@ -1,0 +1,47 @@
+page-buisness-details {
+  .title {
+    background: #fff;
+    text-align: center;
+    .toolbar-title {
+      color: grey;
+      letter-spacing: 4px;
+    }
+  }
+  .border {
+    border-top: 1px solid grey;
+    display: block;
+  }
+  .business-details {
+    border-bottom: 1px solid grey;
+    padding: 14px;
+    span {
+      display: inline-block;
+      width: 18%;
+      margin: 0.5%;
+    }
+  }
+  .toolbar-background {
+    background: #0f83e8;
+  }
+  .history-settings {
+    text-align: center;
+    .history {
+      width: 47%;
+      background: none;
+      span {
+        // font-weight: bold;
+        letter-spacing: 6px;
+        font-size: 17px;
+      }
+    }
+    .settings {
+      width: 47%;
+      background: none;
+      span {
+        letter-spacing: 6px;
+        // font-weight: bold;
+        font-size: 17px;
+      }
+    }
+  }
+}

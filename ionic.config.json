@@ -1,0 +1,7 @@
+{
+  "name": "VP",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

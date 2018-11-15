@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title> Hotel ZaZa </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-menu type="overlay" [content]="content">
+  <ion-header>
+    <ion-toolbar> <ion-title> Hotel ZaZa </ion-title> </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item> aaaa </ion-item>
+      <ion-item [navPush]="pushPage1">Buisness</ion-item>
+      <ion-item [navPush]="pushPage2">Pingvalet</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content padding #content>
+  <cell *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item">
+  </cell>
+</ion-content>
