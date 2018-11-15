@@ -1,10 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
-/**
- * Generated class for the PipesPhonePipe pipe.
- *
- * See https://angular.io/api/core/Pipe for more info on Angular Pipes.
- */
 @Pipe({
   name: 'pipesPhone',
 })
@@ -28,7 +23,7 @@ export class PipesPhonePipe implements PipeTransform {
     }
     if (match3) {
       console.log(match3);
-      return '(' + match3[1] + ') ' ;
+      return '(' + match3[1] + ') ';
     }
     return value;
   }

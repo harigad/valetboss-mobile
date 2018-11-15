@@ -12,7 +12,6 @@ import {tap} from 'rxjs/operators';
 import {appConfig} from '../utils/app.config';
 import {clearLocalStorage, getFromLocalStorage} from '../utils/local-storage';
 
-
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
 

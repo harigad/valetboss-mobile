@@ -24,7 +24,7 @@ export class PingvaletPage {
   ) {}
 
   ionViewDidLoad() {
-    this.bs.getBuisnesses().subscribe(
+    this.bs.getBusinesses().subscribe(
       (businesses: any[]) => {
         this.businesses = businesses;
       },
