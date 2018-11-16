@@ -23,7 +23,7 @@ export class BusinessPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad BusinessPage");
-    let clientid = 1;
+    let clientid = 1;//USE THE CLIENT ID returned by login page.
     this.parkingService.getParingCells(clientid).subscribe(
       (cells: any[]) => {
         this.cells = cells;
