@@ -23,7 +23,8 @@ export class BusinessPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad BusinessPage");
-    this.parkingService.getParingCells().subscribe(
+    let clientid = 1;
+    this.parkingService.getParingCells(clientid).subscribe(
       (cells: any[]) => {
         this.cells = cells;
       },

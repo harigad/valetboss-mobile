@@ -7,7 +7,7 @@ export class ParkingProvider {
   constructor(public http: HttpClient) {
   }
 
-  getParingCells() {
-    return this.http.get("/cells");
+  getParingCells(client) {
+    return this.http.get("https://valetboss-dev-api.herokuapp.com/dashboard/" + client);
   }
 }
