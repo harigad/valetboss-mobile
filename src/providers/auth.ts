@@ -10,10 +10,10 @@ export class AuthProvider {
 
   sendPhoneNumber(phone) {
     console.log('submiting');
-    return this.http.post(`https://valetboss-dev-api.herokuapp.com/login/mobile/${phone.phone.replace(/\D/g, '')}`, {});
+    return this.http.post(`/apiUrl/login/mobile/${phone.phone.replace(/\D/g, '')}`, {});
   }
 
   sendPin(pin) {
-    return this.http.post(`https://valetboss-dev-api.herokuapp.com/login/verify/${pin.phone.replace(/\D/g, '')}/${pin.pin}`, {});
+    return this.http.post(`/apiUrl/login/verify/${pin.phone.replace(/\D/g, '')}/${pin.pin}`, {});
   }
 }

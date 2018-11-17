@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+
 import {
   HttpErrorResponse,
   HttpEvent,
@@ -11,15 +12,21 @@ import {Observable} from 'rxjs/Observable';
 import {tap} from 'rxjs/operators';
 import {appConfig} from '../utils/app.config';
 import {clearLocalStorage, getFromLocalStorage} from '../utils/local-storage';
+import {Nav} from "ionic-angular";
+import {HomePage} from "../pages/home/home";
+// import {Router} from '@angular/router';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
 
-  constructor() {
+  constructor(
+      private nav: Nav
+  ) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url.indexOf(appConfig.apiUrl) !== -1 && req.url.indexOf(appConfig.apiUrl+'login') === -1) {
+    // if (req.url.indexOf(appConfig.apiUrl) !== -1 && req.url.indexOf(appConfig.apiUrl+'login') === -1) {
+    if (req.url.indexOf('/apiUrl/') !== -1) {
       return this.handleRequest(req, next);
     }
     return next.handle(req);
@@ -29,7 +36,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     const auth = getFromLocalStorage('VB_USER');
     if (auth && auth.token) {
       req = req.clone({
-        headers: req.headers.set('Authorization', `Bearer ${auth.token}`)
+        headers: req.headers.set('x-access-token', ` ${auth.token}`).append('Content-Type', 'application/x-www-form-urlencoded')
       });
     }
     return next.handle(req)
@@ -47,6 +54,7 @@ export class HttpInterceptorService implements HttpInterceptor {
                     if (err.status === 401) {
                       clearLocalStorage();
                       // TODO: Navigate to Login
+                      this.nav.setRoot(HomePage);
                     }
                   }
                 })

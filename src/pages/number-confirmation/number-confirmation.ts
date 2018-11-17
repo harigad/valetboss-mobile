@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthProvider} from "../../providers/auth";
 import {BusinessPage} from '../business/business'
+import {BusinessesPage} from "../businesses/businesses";
 import {setToLocalStorage} from '../../utils/local-storage'
 
 /**
@@ -52,7 +53,14 @@ export class NumberConfirmationPage implements OnInit {
     const pin = this.pinForm.get('pin1').value + this.pinForm.get('pin2').value + this.pinForm.get('pin3').value + this.pinForm.get('pin4').value;
     this.authProvider.sendPin({pin: pin, phone: this.navParams.get('phone')}).subscribe((res: any) => {
       setToLocalStorage('VB_USER', res);
-      this.navCtrl.push(BusinessPage);
+      if(res.type == Array.isArray([])){
+        this.navCtrl.push(BusinessPage);
+        console.log(res);
+      }else {
+        this.navCtrl.push(BusinessesPage);
+      }
+
+
     }, error => {
       this.wrongPin = true;
       console.log(error)

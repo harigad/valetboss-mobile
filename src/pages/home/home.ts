@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {AuthProvider} from "../../providers/auth";
 import {NumberConfirmationPage} from '../number-confirmation/number-confirmation'
+import {getFromLocalStorage} from "../../utils/local-storage";
+import {BusinessDetailsProvider} from "../../providers/business-details/business-details";
+import {BusinessPage} from "../business/business";
+import {BusinessesPage} from "../businesses/businesses";
 
 
 @Component({
@@ -13,12 +17,30 @@ export class HomePage implements OnInit {
 
   constructor(
       public navCtrl: NavController,
-      private authProvider: AuthProvider
+      private authProvider: AuthProvider,
+      private bp: BusinessDetailsProvider
   ) {
 
   }
 
   ngOnInit() {
+    const currentUser = getFromLocalStorage('VB_USER');
+    if(currentUser && currentUser.token){
+      this.bp.getDashboard(currentUser.account).subscribe(res => {
+        this.navCtrl.push(BusinessPage);
+      }, error => {
+        if (error.status !== 403){
+          if(currentUser.clients.length === 1){
+            this.navCtrl.push(BusinessPage);
+          }
+          else{
+            this.navCtrl.push(BusinessesPage);
+          }
+
+        }
+        console.log(error.status);
+      });
+    }
 
   }
 

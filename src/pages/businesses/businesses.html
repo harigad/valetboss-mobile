@@ -19,12 +19,10 @@
 
 <ion-content #content padding>
   <div
-    (click)="pushBis(business)"
-    *ngFor="let business of businesses"
-    class="clutch-bar"
-  >
-    <h3>Clutch Bar & Grill</h3>
-    <span>Parked : 44</span> <span>Ready to Pick Up: 4</span>
-    <span>Online since 09/11/2018 6:15 PM </span>
+    (click)="pushBis(business)" *ngFor="let business of businesses" class="clutch-bar">
+    <h3>{{ business.name }}</h3>
+    <span>{{ business.parked }}</span>
+    <span>{{ business.pickedup }}</span>
+    <span>Online since {{ business.onlineTime }} </span>
   </div>
 </ion-content>
