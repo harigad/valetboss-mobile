@@ -12,7 +12,7 @@ import {Observable} from 'rxjs/Observable';
 import {tap} from 'rxjs/operators';
 import {appConfig} from '../utils/app.config';
 import {clearLocalStorage, getFromLocalStorage} from '../utils/local-storage';
-import {Nav} from "ionic-angular";
+// import {Nav} from "ionic-angular";
 import {HomePage} from "../pages/home/home";
 // import {Router} from '@angular/router';
 
@@ -20,7 +20,7 @@ import {HomePage} from "../pages/home/home";
 export class HttpInterceptorService implements HttpInterceptor {
 
   constructor(
-      private nav: Nav
+      // private nav: Nav
   ) {
   }
 
@@ -54,7 +54,6 @@ export class HttpInterceptorService implements HttpInterceptor {
                     if (err.status === 401) {
                       clearLocalStorage();
                       // TODO: Navigate to Login
-                      this.nav.setRoot(HomePage);
                     }
                   }
                 })

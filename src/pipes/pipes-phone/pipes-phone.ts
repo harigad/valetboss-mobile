@@ -10,7 +10,7 @@ export class PipesPhonePipe implements PipeTransform {
   transform(value: string = '', ...args) {
     console.log('piping');
     let cleaned = ('' + value).replace(/\D/g, '');
-    let match1 = cleaned.match(/^(\d{3})(\d{3})(\d{4})(\d{1})$/);
+    let match1 = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
     let match2 = cleaned.match(/^(\d{3})(\d{3})$/);
     let match3 = cleaned.match(/^(\d{3})$/);
     if (match1) {

@@ -1,5 +1,5 @@
-<div class="cell" [ngClass]="{ busy: cell.busy }">
+<div class="cell" [ngClass]="{ busy: cell.action == 1, 'ready-unpaid': cell.action == 2, 'ready-paid': cell.action == 3}">
   <div class="cell-count">{{ ind + 1 }}</div>
-  <div class="cell-date">{{ cell.time | amDateFormat: "LT" }}</div>
+  <div class="cell-date">{{ cell.created | amDateFormat: "LT" }}</div>
   <div class="identify">{{ cell.identifier }}</div>
 </div>

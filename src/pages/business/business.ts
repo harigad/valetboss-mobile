@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
-import { IonicPage, NavController, NavParams } from "ionic-angular";
-import { ParkingProvider } from "../../providers/parking/parking";
-import { BusinessesPage } from "../businesses/businesses";
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {ParkingProvider} from "../../providers/parking/parking";
+import {BusinessesPage} from "../businesses/businesses";
+import {BusinessDetailsProvider} from "../../providers/business-details/business-details";
 
 @IonicPage()
 @Component({
@@ -12,27 +13,29 @@ export class BusinessPage {
   pushPage1: any;
   pushPage2: any;
   public cells = [];
+  public business: any = {};
+
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    private parkingService: ParkingProvider
+      public navCtrl: NavController,
+      public navParams: NavParams,
+      private parkingService: ParkingProvider,
+      private ds: BusinessDetailsProvider
   ) {
     this.pushPage1 = BusinessPage;
     this.pushPage2 = BusinessesPage
-    this.cells = [
-      { time: new Date(), identifier: "DJY7894", busy: false },
-      { time: new Date(), identifier: "PXY7844", busy: true },
-      { time: new Date(), identifier: "DTY7894", busy: false },
-      { time: new Date(), identifier: "RJY7294", busy: true },
-      { time: new Date(), identifier: "RJY7294", busy: false },
-      { time: new Date(), identifier: "RJY7294", busy: true },
-      { time: new Date(), identifier: "RJY7294", busy: false },
-      { time: new Date(), identifier: "RJY7294", busy: true }
-    ];
+
   }
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad BusinessPage");
+    if (this.navParams.get('business')) {
+      this.business = this.navParams.get('business')
+    } else {
+      this.navCtrl.push(BusinessesPage)
+    }
 
+    this.ds.getDashboard(this.business.id).subscribe((res: any[]) => {
+      this.cells = res;
+    })
+    console.log(this.business);
   }
 }

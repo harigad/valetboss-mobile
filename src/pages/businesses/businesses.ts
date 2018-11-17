@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { BuisnessProvider } from "../../providers/buisness/buisness";
-import { BuisnessDetailsPage } from "../../pages/buisness-details/buisness-details";
+import { BusinessPage } from "../business/business";
 import {getFromLocalStorage} from "../../utils/local-storage";
 
 @IonicPage()
@@ -22,6 +22,6 @@ export class BusinessesPage {
   }
 
   pushBis(bisness){
-    this.navCtrl.push(BuisnessDetailsPage, {business: bisness});
+    this.navCtrl.push(BusinessPage, {business: bisness});
   }
 }

@@ -12,9 +12,6 @@ export class BusinessDetailsProvider {
     console.log('Hello BusinessDetailsProvider Provider');
   }
 
-  getDetailses() {
-    return this.http.get(`/apiUrl/details`);
-  }
 
   getDashboard(id) {
     return this.http.get(`/apiUrl/dashboard/${id}`);

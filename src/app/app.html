@@ -1,1 +1,15 @@
-<ion-nav [root]="rootPage"></ion-nav>
+
+<ion-menu type="overlay" id="mainMenu" [content]="content">
+  <ion-header>
+    <ion-toolbar> <ion-title> Vallet Boss </ion-title> </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item> aaaa </ion-item>
+      <ion-item [navPush]="pushPage1">Buisness</ion-item>
+      <ion-item [navPush]="pushPage2">Pingvalet</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>

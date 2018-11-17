@@ -1,0 +1,61 @@
+@import "../../theme/variables";
+
+cell-big {
+  .m-5{
+    margin: 8px;
+  }
+  .cell {
+    margin: 0.5% 0;
+    width: 100%;
+    display: inline-block;
+    background: #0f7bca;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 4px;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: 2px;
+    .bg{
+      letter-spacing: 6px;
+    }
+
+    .cell-count {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    span{
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+  }
+
+  .cell.busy {
+    background: gray;
+  }
+
+  .cell.ready-unpaid {
+    background: color($colors, danger);
+  }
+
+  .cell.ready-paid {
+    background: color($colors, secondary);
+  }
+
+  @media only screen and (min-width: 667px) {
+    .cell {
+      width: 23%;
+      margin: 1%;
+      .cell-date {
+        letter-spacing: 4px;
+        font-size: 15px;
+        padding: 4px 0;
+      }
+      .identify {
+        letter-spacing: 4px;
+        font-size: 15px;
+      }
+    }
+  }
+
+}
