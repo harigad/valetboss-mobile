@@ -1,6 +1,6 @@
 .cell {
   float: left;
-  width: 24%;
+  width: 49%;
   margin: 0.5%;
   display: inline-block;
   background: #0f7bca;
@@ -15,8 +15,12 @@
   }
 }
 
+.cell.reserved {
+  background: #999;
+}
+
 .cell.busy {
-  background: gray;
+  background: #0084ff;
 }
 .cell.ready-unpaid{
   background: red;

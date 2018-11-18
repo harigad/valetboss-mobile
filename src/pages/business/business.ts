@@ -26,6 +26,16 @@ export class BusinessPage {
 
   }
 
+  getReservations(): any {
+    const result = this.cells.filter(cell => cell.action == 0);
+    return result.length || 0;
+  }
+
+  getReadyForPickup(): any {
+    const result = this.cells.filter(cell => cell.action == 2 || cell.action == 3);
+    return result.length || 0;
+  }
+
   ionViewDidLoad() {
     if (this.navParams.get('business')) {
       this.business = this.navParams.get('business')

@@ -1,22 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title> Hotel ZaZa </ion-title>
+    <ion-title> {{business.name || "loading.."}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
-  <cell-big *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"></cell-big>
-  <cell *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"></cell>
+ <cell *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"></cell>
 
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <span class="footer-span">
-      [ 3 ] RESERVATIONS
-    </span>
 
+<ion-footer  >
+  <ion-toolbar >
+    <div style="width:60%;display:inline-block;">
+    <span class="footer-span">
+      [ {{ getReservations() }} ] RESERVATIONS
+    </span>
+    <span class="footer-span">
+      [ {{ getReadyForPickup() }} ] READY FOR PICKUP
+    </span>
+  </div>
     <button ion-button full-button style="float: right">
       NEW CHECKIN
     </button>
