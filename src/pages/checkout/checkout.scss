@@ -1,0 +1,66 @@
+page-checkout {
+    .toolbar-background{
+      background: #752222;
+    }
+  ion-title{
+    .toolbar-title{
+      letter-spacing: 4px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  .checkout{
+    text-align: center;
+    .cell-num{
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 8px;
+      margin-bottom: 15px;
+      display: block;
+    }
+    .cell-mobile{
+      letter-spacing: 4px;
+      font-size: 17px;
+      margin-bottom: 15px;
+      display: block;
+    }
+    .date {
+      letter-spacing: 2px;
+      font-size: 12px;
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+  .check-btn{
+    text-align: center;
+    padding-top: 20px;
+    .checkout{
+      padding: 6px 10px;
+      width: 70%;
+      display: block;
+      margin: auto;
+      height: 100px;
+      background: #fff;
+      .button-inner{
+        font-size: 26px;
+        letter-spacing: 6px;
+        color: #504e4e;
+        font-weight: bold;
+      }
+    }
+    .cancel{
+      background: #fff;
+      width: 35%;
+      border-radius: 5px;
+      height: 30px;
+      margin-top: 20px;
+      .button-inner{
+        color: #504e4e;
+        letter-spacing: 4px;
+        font-size: 18px;
+      }
+    }
+  }
+  }
+

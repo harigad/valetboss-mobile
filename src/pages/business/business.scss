@@ -1,11 +1,20 @@
 page-business {
-
- 
     background-color:#333;
-  
+
 .footer-span{
   display: inline-block;
   padding-top: 7px;
   padding-left:10px;
 }
+  .toolbar{
+   .new-check{
+     background: #0f87de;
+     padding: 0 12px;
+     .button-inner{
+       letter-spacing: 2px;
+       font-weight: 100;
+       font-size: 14px;
+     }
+   }
+  }
 }

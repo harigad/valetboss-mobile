@@ -1,0 +1,41 @@
+page-checkin{
+  .toolbar{
+    .toolbar-background{
+      background: #333333;
+    }
+  ion-title{
+    .toolbar-title{
+      letter-spacing: 2px;
+      color: grey;
+      font-weight: normal;
+    }
+  }
+  .save-check{
+    float: right;
+    background: #0c59cc;
+    letter-spacing: 3px;
+  }
+  .cancel-check{
+    background: #0c59cc;
+    letter-spacing: 3px;
+    z-index: 99999;
+  }
+}
+  .new-checkin{
+    ion-input{
+      border-bottom: 2px solid #6c6c6c;
+      .text-input{
+        text-align: center;
+        letter-spacing: 2px;
+        font-size: 17px;
+        margin: 20px 0;
+      }
+    }
+    .err-filed{
+      color: red;
+      font-size: 17px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+}

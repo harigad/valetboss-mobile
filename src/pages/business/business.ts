@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams} from "ionic-angular";
 import {ParkingProvider} from "../../providers/parking/parking";
 import {BusinessesPage} from "../businesses/businesses";
 import {BusinessDetailsProvider} from "../../providers/business-details/business-details";
+import { CheckinPage } from "../checkin/checkin";
 
 @IonicPage()
 @Component({
@@ -45,7 +46,11 @@ export class BusinessPage {
 
     this.ds.getDashboard(this.business.id).subscribe((res: any[]) => {
       this.cells = res;
-    })
+    });
     console.log(this.business);
+  }
+
+  newCheckin(){
+    this.navCtrl.push(CheckinPage, {id: this.business.id});
   }
 }
