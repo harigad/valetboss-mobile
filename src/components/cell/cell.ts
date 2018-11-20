@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import { NavController, ModalController } from "ionic-angular";
 import {CheckoutPage} from "../../pages/checkout/checkout";
-import { JSONP_ERR_NO_CALLBACK } from "@angular/common/http/src/jsonp";
+// import { JSONP_ERR_NO_CALLBACK } from "@angular/common/http/src/jsonp";
 
 @Component({
   selector: "cell",
@@ -24,11 +24,9 @@ export class CellComponent implements OnInit {
   }
 
   pushCheckout(){
-    debugger;
     let modal = this.modalCtrl.create(CheckoutPage,{checkin: this.cell, businessId: this.businessId});
     modal.onDidDismiss(status => {
-      debugger;
-      this.callBack();
+      // this.callBack();
       if(status){
        //refresh
       }
