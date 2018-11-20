@@ -1,4 +1,19 @@
 page-checkout {
+  .bg{
+    
+  }
+
+  .bg.unpaid {
+    background-color: #333;
+  }
+
+  .bg.ready-unpaid {
+    background-color: red;
+  }
+
+  .bg.ready-paid {
+    background-color: green;
+  }
     .toolbar-background{
       background: #752222;
     }

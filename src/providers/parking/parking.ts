@@ -22,5 +22,14 @@ export class ParkingProvider {
 
     return this.http.post(`/apiUrl/dashboard/${id}/checkin`, params);
   }
+
+  checkout(businessId,checkin, stripe,paymentType){
+    const params = new HttpParams()
+        .set('checkin', checkin)
+        .set('stripe', JSON.stringify(stripe || {}))
+        .set('paymentType', paymentType);
+
+    return this.http.post(`/apiUrl/dashboard/${businessId}/checkout`, params);
+  }
 }
 

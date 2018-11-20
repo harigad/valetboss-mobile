@@ -6,8 +6,7 @@
 </ion-header>
 
 <ion-content padding>
- <cell *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"></cell>
-
+ <cell *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"  [callBack]="_loadData.bind(this)" [businessId]="business.id"  ></cell>
 </ion-content>
 
 <ion-footer  >

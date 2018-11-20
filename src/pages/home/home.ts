@@ -3,8 +3,6 @@ import {MenuController, NavController} from 'ionic-angular';
 import {AuthProvider} from "../../providers/auth";
 import {NumberConfirmationPage} from '../number-confirmation/number-confirmation'
 import {getFromLocalStorage} from "../../utils/local-storage";
-import {BusinessDetailsProvider} from "../../providers/business-details/business-details";
-import {BusinessPage} from "../business/business";
 import {BusinessesPage} from "../businesses/businesses";
 
 
@@ -14,11 +12,11 @@ import {BusinessesPage} from "../businesses/businesses";
 })
 export class HomePage implements OnInit {
   public phone;
+  ready:any = false;
 
   constructor(
       public navCtrl: NavController,
       private authProvider: AuthProvider,
-      private bp: BusinessDetailsProvider,
       public menuCtrl: MenuController
   ) {
 
@@ -27,20 +25,9 @@ export class HomePage implements OnInit {
   ngOnInit() {
     const currentUser = getFromLocalStorage('VB_USER');
     if(currentUser && currentUser.token){
-      this.bp.getDashboard(currentUser.account).subscribe(res => {
-        this.navCtrl.push(BusinessPage);
-      }, error => {
-        if (error.status !== 403){
-          if(currentUser.clients.length === 1){
-            this.navCtrl.push(BusinessPage);
-          }
-          else{
-            this.navCtrl.push(BusinessesPage);
-          }
-
-        }
-        console.log(error.status);
-      });
+        this.navCtrl.setRoot(BusinessesPage,{},{animate:false}); 
+    }else{
+      this.ready = true;
     }
 
   }

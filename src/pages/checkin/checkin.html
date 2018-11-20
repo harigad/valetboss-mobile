@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <button (click)="navCtrl.pop()" class="cancel-check" ion-button>cancel</button>
+    <button (click)="cancel()" class="cancel-check" ion-button>cancel</button>
     <ion-title>CHECKIN</ion-title>
     <button (click)="addNewCheckin()" class="save-check" ion-button>save</button>
   </ion-toolbar>
@@ -9,9 +9,9 @@
 <ion-content padding>
   <div class="new-checkin">
     <form [formGroup]="formCheckin" action="" method="post">
-      <ion-input formControlName="mobile" required placeholder="enter mobile number" type="number"></ion-input>
-      <ion-input formControlName="ticket" required placeholder="enter licence plate number" type="number"></ion-input>
-      <ion-input formControlName="car" required placeholder="enter number" type="text"></ion-input>
+      <ion-input formControlName="mobile" required placeholder="enter mobile number" type="number" maxlength="10"></ion-input>
+      <ion-input formControlName="ticket" required placeholder="enter ticket number" type="number"></ion-input>
+     
       <p class="err-filed" *ngIf="errorCode">All fields are required *</p>
     </form>
   </div>

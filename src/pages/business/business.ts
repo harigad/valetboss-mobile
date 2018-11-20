@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {IonicPage, NavController, NavParams, ModalController} from "ionic-angular";
 import {ParkingProvider} from "../../providers/parking/parking";
 import {BusinessesPage} from "../businesses/businesses";
 import {BusinessDetailsProvider} from "../../providers/business-details/business-details";
@@ -17,13 +17,12 @@ export class BusinessPage {
   public business: any = {};
 
   constructor(
+      public modalCtrl: ModalController,
       public navCtrl: NavController,
       public navParams: NavParams,
       private parkingService: ParkingProvider,
       private ds: BusinessDetailsProvider
   ) {
-    this.pushPage1 = BusinessPage;
-    this.pushPage2 = BusinessesPage
 
   }
 
@@ -43,14 +42,23 @@ export class BusinessPage {
     } else {
       this.navCtrl.push(BusinessesPage)
     }
-
-    this.ds.getDashboard(this.business.id).subscribe((res: any[]) => {
-      this.cells = res;
-    });
+    this._loadData();
     console.log(this.business);
   }
 
+  _loadData(){
+    this.ds.getDashboard(this.business.id).subscribe((res: any[]) => {
+      this.cells = res;
+    });
+  }
+
   newCheckin(){
-    this.navCtrl.push(CheckinPage, {id: this.business.id});
+    let modal = this.modalCtrl.create(CheckinPage,{id: this.business.id});
+    modal.onDidDismiss(status => {
+      if(status){
+        this._loadData();
+      }
+    });
+    modal.present();
   }
 }

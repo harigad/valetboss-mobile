@@ -1,3 +1,4 @@
+<div *ngIf="ready">
 <img src="../assets/imgs/logo_transparent.png" alt="">
 
 <form (submit)="sendPhoneNumber()" >
@@ -5,3 +6,4 @@
   <ion-input maxlength="16"  class="phone" type="tel" name="phone" [ngModel]="phone | pipesPhone" placeholder="(xxx) - xxx - xxxx" (ngModelChange)="phone=$event"></ion-input>
   <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
 </form>
+</div>

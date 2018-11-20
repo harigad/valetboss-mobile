@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular'
+import {IonicPage, NavController,ViewController, NavParams} from 'ionic-angular'
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ParkingProvider} from "../../providers/parking/parking";
 import {BusinessPage} from "../business/business";
@@ -30,13 +30,13 @@ export class CheckinPage {
   constructor
   (public navCtrl: NavController,
    public navParams: NavParams,
+   public viewCtrl: ViewController,
    public formbuilder: FormBuilder,
    private parkingService: ParkingProvider
   ) {
     this.formCheckin = formbuilder.group({
       mobile: ['', Validators.required],
-      ticket: ['', Validators.required],
-      car: ['', Validators.required],
+      ticket: ['', Validators.required]
     });
     this.id = this.navParams.get('id');
   }
@@ -45,18 +45,22 @@ export class CheckinPage {
     console.log('CheckinPage');
   }
 
+  cancel() {
+    this.viewCtrl.dismiss(false);
+  }
+
   addNewCheckin() {
     if(this.formCheckin.valid) {
       this.errorCode = false;
       let checkin = {mobile: '', ticket: '', car: ''};
       checkin.mobile = this.formCheckin.controls['mobile'].value;
       checkin.ticket = this.formCheckin.controls['ticket'].value;
-      checkin.car = this.formCheckin.controls['car'].value;
+      checkin.car = null;//this.formCheckin.controls['car'].value;
       console.log(checkin);
 
       this.parkingService.addCheckin(this.id, this.formCheckin.value).subscribe((res: any[]) => {
         this.checkin = res;
-        this.navCtrl.push(BusinessPage)
+        this.viewCtrl.dismiss(true);
       }, error => {
         console.log (error.error.code)
       });

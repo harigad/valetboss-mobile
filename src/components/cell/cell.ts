@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
-import { NavController } from "ionic-angular";
+import { NavController, ModalController } from "ionic-angular";
 import {CheckoutPage} from "../../pages/checkout/checkout";
+import { JSONP_ERR_NO_CALLBACK } from "@angular/common/http/src/jsonp";
 
 @Component({
   selector: "cell",
@@ -9,9 +10,12 @@ import {CheckoutPage} from "../../pages/checkout/checkout";
 export class CellComponent implements OnInit {
   @Input() cell;
   @Input() ind;
+  @Input() businessId;
+  @Input() callBack;
 
   constructor(
-      public navCtrl: NavController
+      public navCtrl: NavController,
+      public modalCtrl: ModalController
   ) {
 
   }
@@ -20,6 +24,15 @@ export class CellComponent implements OnInit {
   }
 
   pushCheckout(){
-    this.navCtrl.push(CheckoutPage);
+    debugger;
+    let modal = this.modalCtrl.create(CheckoutPage,{checkin: this.cell, businessId: this.businessId});
+    modal.onDidDismiss(status => {
+      debugger;
+      this.callBack();
+      if(status){
+       //refresh
+      }
+    });
+    modal.present();
   }
 }
