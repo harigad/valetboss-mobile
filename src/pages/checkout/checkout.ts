@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, ViewController, NavParams } from 'ionic-angular';
+import {Component, Input, OnInit} from '@angular/core';
+import {IonicPage, NavController, ViewController, NavParams} from 'ionic-angular';
 import {ParkingProvider} from "../../providers/parking/parking";
+import {AlertController} from 'ionic-angular';
 
 /**
  * Generated class for the CheckoutPage page.
@@ -16,37 +17,61 @@ import {ParkingProvider} from "../../providers/parking/parking";
 })
 export class CheckoutPage implements OnInit {
 
-  checkin:any = {};
-  businessId:any = null;
-  
+  checkout: any = {};
+  businessId: any = null;
 
-  constructor(public parking: ParkingProvider, public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    this.checkin = this.navParams.get("checkin");
+
+  constructor(
+      public parking: ParkingProvider,
+      public navCtrl: NavController,
+      public navParams: NavParams,
+      public viewCtrl: ViewController,
+      private alertCtrl: AlertController
+  ) {
+    this.checkout = this.navParams.get("checkout");
     this.businessId = this.navParams.get('businessId');
   }
 
   ngOnInit() {
-    
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckoutPage');
   }
 
-  cancel(){
+  cancel() {
     this.viewCtrl.dismiss(false);
   }
 
-  process(){
-    debugger;
-    this.parking.checkout(this.businessId, this.checkin.checkin ,{},"cash").subscribe((data) => {
-      debugger;
-      this.viewCtrl.dismiss(true);
-    }, (error) => {
-      debugger;
-      console.log (error.error.code)
+  process() {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm checkout',
+      message: `Do you want make ${this.checkout.ticket} checkout for ?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.viewCtrl.dismiss(true);
+          }
+        },
+        {
+          text: 'Checkout',
+          handler: () => {
+            this.parking.checkout(this.businessId, this.checkout.checkout, {}, "cash").subscribe((data) => {
+              this.viewCtrl.dismiss(true);
+            }, (error) => {
+              console.log(error.error.code)
+            });
+          }
+        }
+      ]
     });
-    
+    alert.present();
+
+
+
   }
 
 }

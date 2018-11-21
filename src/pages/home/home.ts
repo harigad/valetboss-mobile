@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
     const currentUser = getFromLocalStorage('VB_USER');
     if(currentUser && currentUser.token){
-        this.navCtrl.setRoot(BusinessesPage,{},{animate:false}); 
+        this.navCtrl.setRoot(BusinessesPage,{},{animate:false});
     }else{
       this.ready = true;
     }

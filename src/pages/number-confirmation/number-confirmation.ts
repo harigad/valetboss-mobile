@@ -20,10 +20,8 @@ import {setToLocalStorage} from '../../utils/local-storage'
 })
 export class NumberConfirmationPage implements OnInit {
 
-  @ViewChild('pn1') pin1: ElementRef;
-  @ViewChild('pn2') pin2: ElementRef;
-  @ViewChild('pn3') pin3: ElementRef;
-  @ViewChild('pn4') pin4: ElementRef;
+  @ViewChild('a') pin1;
+
   public pinForm: FormGroup;
   public wrongPin = false;
 
@@ -45,7 +43,7 @@ export class NumberConfirmationPage implements OnInit {
       pin2: ['', Validators.required],
       pin3: ['', Validators.required],
       pin4: ['', Validators.required]
-    })
+    });
   }
 
   sendPin() {
@@ -53,10 +51,10 @@ export class NumberConfirmationPage implements OnInit {
     const pin = this.pinForm.get('pin1').value + this.pinForm.get('pin2').value + this.pinForm.get('pin3').value + this.pinForm.get('pin4').value;
     this.authProvider.sendPin({pin: pin, phone: this.navParams.get('phone')}).subscribe((res: any) => {
       setToLocalStorage('VB_USER', res);
-      if(res.type == Array.isArray([])){
+      if (res.type == Array.isArray([])) {
         this.navCtrl.push(BusinessPage);
         console.log(res);
-      }else {
+      } else {
         this.navCtrl.push(BusinessesPage);
       }
 
@@ -65,6 +63,13 @@ export class NumberConfirmationPage implements OnInit {
       this.wrongPin = true;
       console.log(error)
     })
+  }
+
+  moveFocus(currentelement, nextElement) {
+    if (currentelement.value) {
+      nextElement.setFocus();
+    }
+
   }
 
 }

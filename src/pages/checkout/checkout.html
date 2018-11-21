@@ -4,11 +4,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="bg" [ngClass]="{ 'unpaid': checkin.action == 1, 'ready-unpaid': checkin.action == 2, 'ready-paid': checkin.action == 3}" padding>
-  <div class="checkout">
-    <span class="cell-num">#{{ checkin.ticket }}</span>
-    <span class="cell-mobile">{{ checkin.mobile }}</span>
-    <span class="date">{{ checkin.created }}</span>
+<ion-content class="bg" [ngClass]="{ 'unpaid': checkout?.action == 1, 'ready-unpaid': checkout?.action == 2, 'ready-paid': checkout?.action == 3}" padding>
+  <div class="checkout" *ngIf="checkout">
+    <span class="cell-num">#{{ checkout.ticket }}</span>
+    <span class="cell-mobile">{{ checkout.mobile }}</span>
+    <span class="date">{{ checkout.created | amDateFormat: "LT"  }}</span>
   </div>
   <div class="check-btn">
     <button (click) = "process()" class="checkout" ion-button>CHECKOUT</button>

@@ -25,7 +25,7 @@ export class ParkingProvider {
 
   checkout(businessId,checkin, stripe,paymentType){
     const params = new HttpParams()
-        .set('checkin', checkin)
+        .set('checkout', checkin)
         .set('stripe', JSON.stringify(stripe || {}))
         .set('paymentType', paymentType);
 
