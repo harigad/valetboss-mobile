@@ -25,12 +25,12 @@ export class BusinessesPage {
     const currentUser = getFromLocalStorage('VB_USER');
     this.businesses = currentUser.clients;
       if(this.businesses.length == 1){
-         this.pushBis(this.businesses[0]);;
+         this.pushBis(this.businesses[0]);
       }
   }
 
   ionViewDidLoad() {
-   
+
   }
 
   pushBis(bisness){
