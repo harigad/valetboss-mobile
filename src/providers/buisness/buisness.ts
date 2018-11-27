@@ -13,6 +13,6 @@ export class BuisnessProvider {
   }
 
   getBusinesses() {
-    return this.http.get(`/apiUrl/businesses`);
+    return this.http.get(`${appConfig.apiUrl}businesses`);
   }
 }

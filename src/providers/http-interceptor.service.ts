@@ -25,8 +25,8 @@ export class HttpInterceptorService implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // if (req.url.indexOf(appConfig.apiUrl) !== -1 && req.url.indexOf(appConfig.apiUrl+'login') === -1) {
-    if (req.url.indexOf('/apiUrl/') !== -1) {
+    if (req.url.indexOf(appConfig.apiUrl) !== -1 && req.url.indexOf(appConfig.apiUrl+'login') === -1) {
+    // if (req.url.indexOf('/apiUrl/') !== -1) {
       return this.handleRequest(req, next);
     }
     return next.handle(req);

@@ -3,11 +3,5 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular",
-  "proxies": [
-    {
-      "path": "/apiUrl",
-      "proxyUrl": "https://valetboss-dev-api.herokuapp.com"
-    }
-  ]
+  "type": "ionic-angular"
 }

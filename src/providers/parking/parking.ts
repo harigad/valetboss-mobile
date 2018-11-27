@@ -20,7 +20,7 @@ export class ParkingProvider {
         .set('ticket', body.ticket)
         .set('car', null);
 
-    return this.http.post(`/apiUrl/dashboard/${id}/checkin`, params);
+    return this.http.post(`${appConfig.apiUrl}dashboard/${id}/checkin`, params);
   }
 
   checkout(businessId,checkin, stripe,paymentType){
