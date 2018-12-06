@@ -14,7 +14,7 @@ export class BusinessDetailsProvider {
 
 
   getDashboard(id) {
-    return this.http.get(`${appConfig.apiUrl}dashboard/${id}`);
+    return this.http.get(appConfig.apiUrl + `/dashboard/${id}`);
   }
 
 }

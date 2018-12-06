@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {IonicPage, NavController, NavParams, ModalController} from "ionic-angular";
 import {ParkingProvider} from "../../providers/parking/parking";
 import {BusinessesPage} from "../businesses/businesses";
+import {BuisnessDetailsPage} from "./../buisness-details/buisness-details";
 import {BusinessDetailsProvider} from "../../providers/business-details/business-details";
 import { CheckinPage } from "../checkin/checkin";
 
@@ -46,9 +47,20 @@ export class BusinessPage {
     console.log(this.business);
   }
 
+  details() {
+    this.navCtrl.push(BuisnessDetailsPage);
+  }
+
   _loadData(){
     this.ds.getDashboard(this.business.id).subscribe((res: any[]) => {
       this.cells = res;
+      setTimeout(function(){
+        this._loadData();
+      }.bind(this),5000);
+    },(err)=>{
+      setTimeout(function(){
+        this._loadData();
+      }.bind(this),5000);
     });
   }
 

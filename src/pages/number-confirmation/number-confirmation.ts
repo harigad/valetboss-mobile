@@ -35,6 +35,8 @@ export class NumberConfirmationPage implements OnInit {
 
   ionViewDidLoad() {
 
+    this.pin1.setFocus();
+
   }
 
   ngOnInit(): void {
@@ -46,9 +48,13 @@ export class NumberConfirmationPage implements OnInit {
     });
   }
 
+ sentPin:any = "";
   sendPin() {
     this.wrongPin = false;
     const pin = this.pinForm.get('pin1').value + this.pinForm.get('pin2').value + this.pinForm.get('pin3').value + this.pinForm.get('pin4').value;
+    
+    if(pin !== this.sentPin){
+    this.sentPin = pin;
     this.authProvider.sendPin({pin: pin, phone: this.navParams.get('phone')}).subscribe((res: any) => {
       setToLocalStorage('VB_USER', res);
       if (res.type == Array.isArray([])) {
@@ -62,12 +68,19 @@ export class NumberConfirmationPage implements OnInit {
     }, error => {
       this.wrongPin = true;
       console.log(error)
-    })
+    });
+  }
   }
 
-  moveFocus(currentelement, nextElement) {
-    if (currentelement.value) {
+  moveFocus(currentelement, nextElement,move = true) {
+    debugger;
+    if (currentelement.value && move) {
       nextElement.setFocus();
+    }
+
+    debugger;
+    if(this.pinForm.valid){
+      this.sendPin();
     }
 
   }

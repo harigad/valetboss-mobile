@@ -1,9 +1,10 @@
 page-checkout {
   .bg{
-    background: #a8352d;
+    min-height:100%;
+    padding-top:100px;
   }
 
-  .bg.unpaid .scroll-content {
+  .bg .unpaid .scroll-content {
     background-color:  #a8352d;
   }
 
@@ -12,8 +13,9 @@ page-checkout {
   }
 
   .bg.ready-paid {
-    background-color: green;
+    background-color: #488aff;
   }
+
     .toolbar-background{
       background: #752222;
     }
@@ -28,7 +30,7 @@ page-checkout {
   .checkout{
     text-align: center;
     .cell-num{
-      font-size: 32px;
+      font-size: 40px;
       font-weight: bold;
       letter-spacing: 8px;
       margin-bottom: 15px;
@@ -51,6 +53,7 @@ page-checkout {
     text-align: center;
     padding-top: 20px;
     .checkout{
+      border-radius: 8px;
       padding: 6px 10px;
       width: 70%;
       display: block;
@@ -60,21 +63,21 @@ page-checkout {
       .button-inner{
         font-size: 26px;
         letter-spacing: 6px;
-        color: #504e4e;
+        color: #488aff;
         font-weight: bold;
       }
     }
     .cancel{
-      background: #fff;
       width: 35%;
+      color:#fff;
+ 
       border-radius: 5px;
       height: 30px;
-      margin-top: 20px;
+      margin-top: 50px;
       text-transform: lowercase;
       .button-inner{
-        color: #504e4e;
         letter-spacing: 4px;
-        font-size: 18px;
+        font-size: 12px;
       }
     }
   }

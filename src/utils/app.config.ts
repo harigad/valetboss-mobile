@@ -1,8 +1,8 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export const appConfig = {
-  apiUrl: 'https://valetboss-dev-api.herokuapp.com/',
-  serverUrl: 'https://valetboss-dev-api.herokuapp.com/',
+  apiUrl: 'https://valetboss-dev-api.herokuapp.com',
+  serverUrl: 'https://valetboss-dev-api.herokuapp.com',
 };
 
 export const allowedImageType = [
