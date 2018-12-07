@@ -11,7 +11,7 @@ export class ParkingProvider {
   }
 
   getParingCells() {
-    return this.http.get(`/apiUrl/cells`);
+    return this.http.get(appConfig.apiUrl + `/cells`);
   }
 
   addCheckin(id, body){
@@ -20,16 +20,13 @@ export class ParkingProvider {
         .set('ticket', body.ticket)
         .set('car', null);
 
-    return this.http.post(`${appConfig.apiUrl}dashboard/${id}/checkin`, params);
+    return this.http.post(appConfig.apiUrl + `/dashboard/${id}/checkin`, params);
   }
 
-  checkout(businessId,checkin, stripe,paymentType){
+  checkout(businessId,checkin){
     const params = new HttpParams()
-        .set('checkout', checkin)
-        .set('stripe', JSON.stringify(stripe || {}))
-        .set('paymentType', paymentType);
-
-    return this.http.post(`/apiUrl/dashboard/${businessId}/checkout`, params);
+        .set('checkin', checkin)
+    return this.http.post(appConfig.apiUrl + `/dashboard/${businessId}/checkout`, params);
   }
 }
 

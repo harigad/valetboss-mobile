@@ -18,6 +18,12 @@ $colors: (
         dark: #222
 );
 
+$range-md-bar-height: 30px;
+$range-ios-bar-height: 30px;
+$range-ios-knob-height: 60px;
+$range-ios-knob-width: 60px;
+$range-md-knob-width: 60px;
+
 @import '../../node_modules/ionic-angular/themes/ionic.globals';
 @import '../../node_modules/ionic-angular/themes/ionic.theme.default';
 @import '../../node_modules/ionic-angular/themes/ionic.ionicons';

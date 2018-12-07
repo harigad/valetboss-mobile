@@ -1,24 +1,27 @@
 @import "../../theme/variables";
-
 cell-big {
   .m-5{
     margin: 8px;
   }
+
+  .odd{
+    background-color:#3567c0;
+  }
+
+  .even{
+    background-color: #488aff;
+  }
+
   .cell {
-    margin: 0.5% 0;
+    margin:0 0;
+    padding-left:20px;
     width: 100%;
     display: inline-block;
-    background: #0f7bca;
-    text-align: center;
-    padding: 12px 0;
-    border-radius: 4px;
     color: #fff;
-    margin-bottom: 4px;
     letter-spacing: 2px;
     .bg{
       letter-spacing: 6px;
     }
-
     .cell-count {
       font-size: 20px;
       font-weight: bold;
@@ -34,21 +37,20 @@ cell-big {
     background: gray;
   }
 
-  .cell.ready-unpaid {
-    background: color($colors, danger);
+  .cell-date {
+    letter-spacing: 4px;
+    font-size: 11px;
+    padding: 4px 0;
   }
 
-  .cell.ready-paid {
-    background: color($colors, secondary);
-  }
-
+  
   @media only screen and (min-width: 667px) {
     .cell {
       width: 23%;
-      margin: 1%;
+    
       .cell-date {
         letter-spacing: 4px;
-        font-size: 15px;
+        font-size: 11px;
         padding: 4px 0;
       }
       .identify {

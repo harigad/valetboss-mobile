@@ -8,7 +8,7 @@
 <ion-content #content padding>
   <div
     (click)="pushBis(business)" *ngFor="let business of businesses" class="clutch-bar">
-    <h3>{{ business.name }}</h3>
+    <h3><strong>{{ business.name }}</strong></h3>
     <span>Parked: {{ business.parked }}</span>
     <span>Ready to Pick Up: {{ business.pickedup }}</span>
     <span>Online since {{ business.onlineTime }} </span>

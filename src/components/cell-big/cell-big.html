@@ -1,17 +1,25 @@
-<div class="cell" *ngIf="cell.action > 1" [ngClass]="{ 'ready-unpaid': cell.action == 2, 'ready-paid': cell.action == 3}">
-  <ion-grid>
+<ion-item-sliding  *ngIf="cell.action > 1"  #item>
+<ion-item style="padding-left:0px;padding-right:0px;margin-right:0px;color:#fff;padding-top:0px;margin-top:0px;"  [ngClass]="{ 'even': ind%2 == 0, 'odd': ind%2 == 1}" >
+<div (click)="pushCheckout()" >
+  <ion-grid class="cell"  [ngClass]="{ 'even': ind%2 == 0, 'odd': ind%2 == 1}">
     <ion-row>
       <ion-col col-4 class="sml">
-        <div class="cell-count">{{ cell.ticket || 'RESERVED' }}</div>
+        <div class="cell-count">#{{ cell.ticket || 'RESERVED' }}</div>
         <div class="cell-date">{{ cell.created | amDateFormat: "LT" }}</div>
-        <div class="identify">{{ cell.identifier }}</div>
       </ion-col>
       <ion-col col-8 class="bg">
-        <span>READY FOR PICKUP</span>
-        <div class="cell-count m-5" *ngIf="cell.action == 3">PAID </div>
-        <div class="cell-count m-5" *ngIf="cell.action == 2">NOT PAID</div>
-        <span>{{cell.phone || 2147348562 | pipesPhone}}</span>
+        <div class="cell-count" *ngIf="cell.action == 3">PAID </div>
+        <div class="cell-count" *ngIf="cell.action == 2">NOT PAID</div>
+        <div class="cell-date" >{{cell.mobile | pipesPhone}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>
 </div>
+</ion-item>
+<ion-item-options style="background-color:#990000;" side="left">
+    <button style="background-color:#990000;" ion-button >
+      <ion-icon name="arrow-up"></ion-icon>
+      checkout
+    </button>
+  </ion-item-options>
+</ion-item-sliding>

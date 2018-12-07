@@ -25,20 +25,22 @@ export class HttpInterceptorService implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.url.indexOf(appConfig.apiUrl) !== -1 && req.url.indexOf(appConfig.apiUrl+'login') === -1) {
-    // if (req.url.indexOf('/apiUrl/') !== -1) {
+    // if (req.url.indexOf(appConfig.apiUrl) !== -1 && req.url.indexOf(appConfig.apiUrl+'login') === -1) {
+   // if (req.url.indexOf('/apiUrl/') !== -1) {
       return this.handleRequest(req, next);
-    }
-    return next.handle(req);
+   // }
+    //return next.handle(req);
   }
 
   private handleRequest(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let dupReq:any;
     const auth = getFromLocalStorage('VB_USER');
     if (auth && auth.token) {
-      req = req.clone({
-        headers: req.headers.set('x-access-token', ` ${auth.token}`).append('Content-Type', 'application/x-www-form-urlencoded')
+        req = req.clone({
+        headers: req.headers.set('x-access-token', ` ${auth.token}`).append('Content-Type', 'application/x-www-form-urlencoded').append('Access-Control-Allow-Origin','*')
       });
     }
+    debugger;
     return next.handle(req)
         .pipe(
             tap(

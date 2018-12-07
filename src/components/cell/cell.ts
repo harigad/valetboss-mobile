@@ -32,9 +32,8 @@ export class CellComponent implements OnInit {
         }
     );
     modal.onDidDismiss(status => {
-      // this.callBack();
       if (status) {
-        //refresh
+         this.callBack();
       }
     });
     modal.present();

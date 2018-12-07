@@ -32,6 +32,13 @@ export class HomePage implements OnInit {
 
   }
 
+  onChange($event){
+    this.phone = $event || "";
+    if(this.phone .replace(/\D/g, '').length == 10){
+      this.sendPhoneNumber();
+    }
+  }
+
   sendPhoneNumber(){
     console.log(this.phone);
     this.authProvider.sendPhoneNumber({phone: this.phone}).subscribe((res: any) => {

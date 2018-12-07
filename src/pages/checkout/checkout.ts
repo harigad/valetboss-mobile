@@ -19,7 +19,7 @@ export class CheckoutPage implements OnInit {
 
   checkout: any = {};
   businessId: any = null;
-
+  doCheckOut:any = 0;
 
   constructor(
       public parking: ParkingProvider,
@@ -30,6 +30,7 @@ export class CheckoutPage implements OnInit {
   ) {
     this.checkout = this.navParams.get("checkout");
     this.businessId = this.navParams.get('businessId');
+    debugger;
   }
 
   ngOnInit() {
@@ -45,33 +46,11 @@ export class CheckoutPage implements OnInit {
   }
 
   process() {
-    let alert = this.alertCtrl.create({
-      title: 'Confirm checkout',
-      message: `Do you want make ${this.checkout.ticket} checkout for ?`,
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            this.viewCtrl.dismiss(true);
-          }
-        },
-        {
-          text: 'Checkout',
-          handler: () => {
-            this.parking.checkout(this.businessId, this.checkout.checkout, {}, "cash").subscribe((data) => {
-              this.viewCtrl.dismiss(true);
-            }, (error) => {
-              console.log(error.error.code)
-            });
-          }
-        }
-      ]
+    this.parking.checkout(this.businessId, this.checkout.checkin).subscribe((data) => {
+      this.viewCtrl.dismiss(true);
+    }, (error) => {
+      console.log(error.error.code)
     });
-    alert.present();
-
-
-
   }
 
 }
