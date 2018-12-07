@@ -1,0 +1,24 @@
+page-client {
+  .toolbar{
+    .toolbar-background{
+      background: #333333;
+    }
+    ion-title{
+      .toolbar-title{
+        letter-spacing: 2px;
+        color: grey;
+        font-weight: normal;
+      }
+    }
+    .save-check{
+      float: right;
+      background: #0c59cc;
+      letter-spacing: 3px;
+    }
+    .cancel-check{
+      background: #0c59cc;
+      letter-spacing: 3px;
+      z-index: 99999;
+    }
+  }
+}

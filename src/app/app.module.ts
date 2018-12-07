@@ -19,6 +19,8 @@ import {BusinessDetailsProvider} from '../providers/business-details/business-de
 import {HttpInterceptorService} from '../providers/http-interceptor.service';
 import { CheckinPageModule } from "../pages/checkin/checkin.module";
 import { CheckoutPageModule } from "../pages/checkout/checkout.module";
+import { ClientPageModule } from "../pages/client/client.module";
+
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { CheckoutPageModule } from "../pages/checkout/checkout.module";
     PingvaletPageModule,
     BuisnessDetailsPageModule,
     CheckinPageModule,
-    CheckoutPageModule
+    CheckoutPageModule,
+    ClientPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp, HomePage],
