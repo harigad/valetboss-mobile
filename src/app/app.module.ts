@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {ErrorHandler, NgModule} from "@angular/core";
-import {IonicApp, IonicErrorHandler, IonicModule} from "ionic-angular";
+import {IonicApp, IonicErrorHandler, IonicModule, IonicPageModule} from "ionic-angular";
 import {SplashScreen} from "@ionic-native/splash-screen";
 import {StatusBar} from "@ionic-native/status-bar";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
@@ -20,6 +20,7 @@ import {HttpInterceptorService} from '../providers/http-interceptor.service';
 import { CheckinPageModule } from "../pages/checkin/checkin.module";
 import { CheckoutPageModule } from "../pages/checkout/checkout.module";
 import { ClientPageModule } from "../pages/client/client.module";
+import { ClientProvider } from '../providers/client/client';
 
 
 
@@ -49,6 +50,7 @@ import { ClientPageModule } from "../pages/client/client.module";
     BuisnessProvider,
     BusinessDetailsProvider,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
+    ClientProvider,
   ],
   exports: []
 })

@@ -48,7 +48,7 @@ export class BusinessPage {
   }
 
   details() {
-    this.navCtrl.push(BuisnessDetailsPage);
+    this.navCtrl.push(BuisnessDetailsPage, this.business);
   }
 
   _loadData(){

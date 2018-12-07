@@ -10,7 +10,7 @@
 
 <ion-content>
 <ion-list style="padding-left:0px;padding-right:0px;margin-left:0px;margin-bottom:0px;padding-bottom:0px;">
-  <cell-big *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"  [callBack]="_loadData.bind(this)" [businessId]="business.id"  ></cell-big>
+  <cell-big *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"  [callBack]="_loadData.bind(this)" [businessId]="business.id"></cell-big>
 </ion-list>
 <div style="padding-left:15px;padding-right:15px;margin-top:15px;" >
 <cell *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"  [callBack]="_loadData.bind(this)" [businessId]="business.id"  ></cell>

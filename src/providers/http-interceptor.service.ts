@@ -40,7 +40,6 @@ export class HttpInterceptorService implements HttpInterceptor {
         headers: req.headers.set('x-access-token', ` ${auth.token}`).append('Content-Type', 'application/x-www-form-urlencoded').append('Access-Control-Allow-Origin','*')
       });
     }
-    debugger;
     return next.handle(req)
         .pipe(
             tap(

@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <button (click)="cancel()" class="cancel-check" ion-button>back</button>
+    <button (click)="back()" class="back-btn" ion-button>back</button>
     <ion-title>Client</ion-title>
-    <button (click)="addNewCheckin()" class="save-check" ion-button>save</button>
+    <button (click)="addNewClient()" class="save-check" ion-button>save</button>
   </ion-toolbar>
 </ion-header>
 
@@ -10,11 +10,12 @@
 <ion-content padding>
   <div class="new-client">
     <form [formGroup]="formClient" action="" method="post">
-      <ion-input formControlName="name" required placeholder="name" type="text"></ion-input>
-      <ion-input formControlName="addres" required placeholder="addres" type="text"></ion-input>
-      <ion-input formControlName="valetPrice" required placeholder="Valet Price (set to 0 complimentary)" type="text"></ion-input>
-      <ion-input formControlName="defaultPrice" required placeholder="Default Tip Price" type="text"></ion-input>
-      <ion-input formControlName="maxCars" required placeholder="Maximum Cars Requested" type="text"></ion-input>
+      <ion-input class="inputName placeCss" formControlName="name" required placeholder="name" type="text"></ion-input>
+      <ion-input class="inputName placeCss" formControlName="address" required placeholder="address" type="text"></ion-input>
+      <ion-input formControlName="base" required placeholder="Valet Price (set to 0 complimentary)"
+      class="place" type="text"></ion-input>
+      <ion-input class="place" formControlName="tip" required placeholder="Default Tip Price" type="text"></ion-input>
+      <ion-input class="place" formControlName="min_ahead" required placeholder="Maximum Cars Requested" type="text"></ion-input>
       <p class="err-filed" *ngIf="errorCode">All fields are required *</p>
     </form>
   </div>

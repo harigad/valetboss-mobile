@@ -6,8 +6,8 @@
   <ion-content>
     <ion-list>
       <ion-item>Hotel Zaza</ion-item>
-      <ion-item [navPush]="pushPage1">Cluth Bar</ion-item>
-      <ion-item [navPush]="pushPage2">+ new client</ion-item>
+      <ion-item (click)="openPage(pushPage1)">Cluth Bar</ion-item>
+      <ion-item (click)="openPage(clientPage)">+ new client</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
