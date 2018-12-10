@@ -42,7 +42,6 @@ export class CheckinPage {
   }
 
   ionViewDidLoad() {
-    console.log('CheckinPage');
   }
 
   cancel() {
@@ -56,7 +55,6 @@ export class CheckinPage {
       checkin.mobile = this.formCheckin.controls['mobile'].value;
       checkin.ticket = this.formCheckin.controls['ticket'].value;
       checkin.car = null;//this.formCheckin.controls['car'].value;
-      console.log(checkin);
 
       this.parkingService.addCheckin(this.id, this.formCheckin.value).subscribe((res: any[]) => {
         this.checkin = res;

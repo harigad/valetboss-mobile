@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {BusinessDetailsProvider} from "../../providers/business-details/business-details";
-
+import { ClientProvider } from '../../providers/client/client';
+import {ClientPage} from "../client/client";
 
 @IonicPage()
 @Component({
@@ -10,22 +11,39 @@ import {BusinessDetailsProvider} from "../../providers/business-details/business
 })
 export class BuisnessDetailsPage {
   public detailses = [];
+  public business: any = {};
+  public client = [];
 
   constructor(
       public navCtrl: NavController,
       public navParams: NavParams,
-      private bs: BusinessDetailsProvider) {
+      private bs: BusinessDetailsProvider,
+      private clientService: ClientProvider) {
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.get('business'));
+    this.business = this.navParams.get('business')
+    this._loadData();
+    this.clientService.getClient(this.business.id).subscribe((res: any[]) =>{
+      this.client = res;
+    })
+  }
 
-    this.detailses = [
-      { date: "Hotel ZaZa1", parkedTotal: 44},
-      { date: "Hotel ZaZa2", parkedTotal: 54},
-      { date: "Hotel ZaZa3", parkedTotal: 64},
-      { date: "Hotel ZaZa4", parkedTotal: 84}
-    ];
+  viewSettings(){
+    this.navCtrl.push(ClientPage, {business: this.client});
+  }
+
+  _loadData(){
+    this.bs.getDashboard(this.business.id).subscribe((res: any[]) => {
+      this.detailses = res;
+      setTimeout(function(){
+        this._loadData();
+      }.bind(this),20000);
+    },(err)=>{
+      setTimeout(function(){
+        this._loadData();
+      }.bind(this),20000);
+    });
   }
 
 }

@@ -40,7 +40,6 @@ export class HomePage implements OnInit {
   }
 
   sendPhoneNumber(){
-    console.log(this.phone);
     this.authProvider.sendPhoneNumber({phone: this.phone}).subscribe((res: any) => {
       if(res && res.status) {
         this.navCtrl.push(NumberConfirmationPage, {phone: this.phone});

@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {appConfig} from "../../utils/app.config";
+
 
 /*
   Generated class for the ClientProvider provider.
@@ -15,7 +16,17 @@ export class ClientProvider {
     console.log('Hello ClientProvider Provider');
   }
 
-  addClient(body){
-    return this.http.put(appConfig.apiUrl + `/admin/client`, body);
+  saveClient(id, body){
+    const params = new HttpParams()
+        .set('name', body.name)
+        .set('address', body.address)
+        .set('base', body.base)
+        .set('tip', body.tip)
+        .set('min_ahead', body.min_ahead)
+    return this.http.put(appConfig.apiUrl + `/admin/client/${id}`, params);
+  }
+
+  getClient(id) {
+    return this.http.get(appConfig.apiUrl + `/admin/client/${id}`);
   }
 }

@@ -44,11 +44,10 @@ export class BusinessPage {
       this.navCtrl.push(BusinessesPage)
     }
     this._loadData();
-    console.log(this.business);
   }
 
   details() {
-    this.navCtrl.push(BuisnessDetailsPage, this.business);
+    this.navCtrl.push(BuisnessDetailsPage, {business: this.business});
   }
 
   _loadData(){

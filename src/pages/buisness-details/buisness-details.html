@@ -4,16 +4,16 @@
 
 <ion-content padding>
   <span class="border"></span>
-  <div *ngFor="let details of detailses" class="business-details">
-    <span>4:44 PM</span> <span>JHD4444</span> <span>checked</span>
-    <span>OUT</span> <span>CASH</span>
+  <div *ngFor="let detail of detailses" class="business-details">
+    <span>{{ detail.created | amDateFormat: "h:mm:ss a"  }}</span><span>checked</span><span>#{{ detail.ticket }}</span>
+    <span>{{ detail.mobile }}</span>
   </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <div class="history-settings">
       <button class="history" ion-button>History</button>
-      <button class="settings" ion-button>Settings</button>
+      <button (click)="viewSettings()" class="settings" ion-button>Settings</button>
     </div>
   </ion-toolbar>
 </ion-footer>

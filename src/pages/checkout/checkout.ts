@@ -38,7 +38,6 @@ export class CheckoutPage implements OnInit {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CheckoutPage');
   }
 
   cancel() {
