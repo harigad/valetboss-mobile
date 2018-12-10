@@ -5,7 +5,7 @@ import {AuthProvider} from "../../providers/auth";
 import {BusinessPage} from '../business/business'
 import {BusinessesPage} from "../businesses/businesses";
 import {setToLocalStorage} from '../../utils/local-storage'
-
+import { Events } from 'ionic-angular';
 /**
  * Generated class for the NumberConfirmationPage page.
  *
@@ -29,7 +29,8 @@ export class NumberConfirmationPage implements OnInit {
       public navCtrl: NavController,
       public navParams: NavParams,
       private fb: FormBuilder,
-      private authProvider: AuthProvider
+      private authProvider: AuthProvider,
+      public events: Events
   ) {
   }
 
@@ -57,6 +58,10 @@ export class NumberConfirmationPage implements OnInit {
     this.sentPin = pin;
     this.authProvider.sendPin({pin: pin, phone: this.navParams.get('phone')}).subscribe((res: any) => {
       setToLocalStorage('VB_USER', res);
+      setTimeout(function(){
+       this.events.publish("user:loggedin");
+      }.bind(this),300);
+
       if (res.type == Array.isArray([])) {
         this.navCtrl.push(BusinessPage);
       } else {

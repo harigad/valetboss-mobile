@@ -26,7 +26,11 @@ export class ClientPage {
 
   public errorCode:boolean = false;
   public client = [];
-  public  business: any = {};
+  public  business: any = {
+    base:5,
+    tip:4,
+    min_ahead: 100
+  };
 
   constructor
   (public navCtrl: NavController,
@@ -38,21 +42,17 @@ export class ClientPage {
   {
     this.formClient = formbuilder.group({
       name: ['', Validators.required],
-      address: ['', Validators.required],
-      base: ['', Validators.required],
-      tip: ['', Validators.required],
-      min_ahead: ['', Validators.required]
+      address: ['', Validators.required]
     });
   }
 
   ionViewDidLoad() {
-    this.business = this.navParams.get('business')[0];
+    if(this.navParams.get('business')){
+    this.business = this.navParams.get('business');
+    }
     this.formClient = this.formbuilder.group({
       name: [this.business.name, Validators.required],
-      address: [this.business.address, Validators.required],
-      base: [this.business.base, Validators.required],
-      tip: [this.business.tip, Validators.required],
-      min_ahead: [this.business.min_ahead, Validators.required]
+      address: [this.business.address, Validators.required]
     });
   }
   back(){
@@ -62,8 +62,13 @@ export class ClientPage {
   backHistory(){
     this.navCtrl.push(BuisnessDetailsPage, {business: this.business});
   }
+  
   addNewClient() {
     if (this.formClient.valid) {
+      let data = this.formClient.value;
+      data.base = this.business.base;
+      data.tip = this.business.tip;
+      data.min_ahead = this.business.min_ahead;
       this.clientService.saveClient(this.business.id, this.formClient.value).subscribe((res: any[]) => {
         this.client = res;
       }, error => {

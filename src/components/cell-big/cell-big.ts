@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {NavController, ModalController} from "ionic-angular";
 import {CheckoutPage} from "../../pages/checkout/checkout";
 
+import {ParkingProvider} from "../../providers/parking/parking";
 /**
  * Generated class for the CellBigComponent component.
  *
@@ -21,11 +22,19 @@ export class CellBigComponent {
   @Input() callBack;
   colors: any = ["#488aff","#3567c0"];
 
-  constructor(public modalCtrl:ModalController) {
+  constructor(public parking:ParkingProvider, public modalCtrl:ModalController) {
 
     
   }
 
+  del(e) {
+    if(e._openAmount < -300){
+          this.cell.action = 4;
+          this.parking.checkout(this.businessId, this.cell.checkin).subscribe((data) => {
+            this.callBack();
+          });
+    }
+  }
 
   pushCheckout() {
     let modal = this.modalCtrl.create(CheckoutPage,

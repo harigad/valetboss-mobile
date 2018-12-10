@@ -23,26 +23,34 @@ export class BuisnessDetailsPage {
 
   ionViewDidLoad() {
     this.business = this.navParams.get('business')
+    this.client = this.business;
     this._loadData();
-    this.clientService.getClient(this.business.id).subscribe((res: any[]) =>{
-      this.client = res;
-    })
   }
+
+  showDate(i){
+    let next = new Date(this.detailses[i].created);
+    if(i==0){
+      return next.toDateString();
+    }else{
+      let last = new Date(this.detailses[i-1].created);
+      if(last.getDate() !== next.getDate()){
+        return next.toDateString();
+      }else{
+        return false;
+      }
+    }
+  }
+
 
   viewSettings(){
     this.navCtrl.push(ClientPage, {business: this.client});
   }
 
   _loadData(){
-    this.bs.getDashboard(this.business.id).subscribe((res: any[]) => {
+    this.bs.getHistory(this.business.id).subscribe((res: any[]) => {
       this.detailses = res;
-      setTimeout(function(){
-        this._loadData();
-      }.bind(this),20000);
     },(err)=>{
-      setTimeout(function(){
-        this._loadData();
-      }.bind(this),20000);
+     
     });
   }
 

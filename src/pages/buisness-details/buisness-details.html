@@ -1,19 +1,31 @@
 <ion-header>
-  <ion-navbar> <ion-title>Business Details</ion-title> </ion-navbar>
+  <ion-navbar> <ion-title>History</ion-title> </ion-navbar>
+  <ion-searchbar class="searchbar" 
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
 </ion-header>
 
-<ion-content padding>
-  <span class="border"></span>
-  <div *ngFor="let detail of detailses" class="business-details">
-    <span>{{ detail.created | amDateFormat: "h:mm:ss a"  }}</span><span>checked</span><span>#{{ detail.ticket }}</span>
-    <span>{{ detail.mobile }}</span>
-  </div>
+<ion-content>
+    <ion-grid style="padding:0px;">
+        <span *ngFor="let detail of detailses;let i = index;" >
+        <ion-row *ngIf="showDate(i)"  class="header" >
+          <ion-col>{{ showDate(i) }}</ion-col>
+        </ion-row>
+        
+        <ion-row style="padding-top:10px;padding-bottom:10px;" [ngClass]="{ 'even': i%2 == 0, 'odd': i%2 == 1}" >
+            <ion-col style="text-align:center;" >{{ detail.created | amDateFormat: "h:mm a"  }}</ion-col>
+            <ion-col style="text-align:center;">#{{ detail.ticket }}</ion-col>
+            <ion-col style="text-align:center;">
+              <span *ngIf="detail.action==1" >parked</span>
+              <span *ngIf="detail.action==3" >requested</span>
+              <span *ngIf="detail.action==4" >released</span>
+            </ion-col>
+            <ion-col><span *ngIf="detail.base || detail.tip" >{{detail.base/100 + detail.tip/100 | currency}}</span></ion-col>
+        </ion-row>
+      </span>
+    </ion-grid>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <div class="history-settings">
-      <button class="history" ion-button>History</button>
-      <button (click)="viewSettings()" class="settings" ion-button>Settings</button>
-    </div>
-  </ion-toolbar>
-</ion-footer>
+

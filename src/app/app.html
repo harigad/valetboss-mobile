@@ -1,13 +1,14 @@
 
-<ion-menu type="overlay" id="mainMenu" [content]="content">
+<ion-menu type="overlay" id="mainMenu" [content]="content" [swipeEnabled]="false" >
   <ion-header>
     <ion-toolbar> <ion-title> Vallet Boss </ion-title> </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item>Hotel Zaza</ion-item>
-      <ion-item (click)="openPage(pushPage1)">Cluth Bar</ion-item>
-      <ion-item (click)="openPage(clientPage)">+ new client</ion-item>
+      <ion-item  *ngFor="let client of clients" (click)="openPage(client)">{{client.name}}
+          <button ion-button outline item-end  (click)="edit($event,client)" >edit</button>
+      </ion-item>
+      <ion-item (click)="newClient()">+ new client</ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>

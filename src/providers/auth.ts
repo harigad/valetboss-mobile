@@ -10,7 +10,7 @@ export class AuthProvider {
   }
 
   sendPhoneNumber(phone) {
-    console.log('submiting');
+    console.log('submiting ' + appConfig.apiUrl + `/login/mobile/${phone.phone.replace(/\D/g, '')}`);
     return this.http.post(appConfig.apiUrl + `/login/mobile/${phone.phone.replace(/\D/g, '')}`, {});
   }
 

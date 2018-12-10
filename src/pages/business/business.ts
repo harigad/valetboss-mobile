@@ -54,12 +54,12 @@ export class BusinessPage {
     this.ds.getDashboard(this.business.id).subscribe((res: any[]) => {
       this.cells = res;
       setTimeout(function(){
-        this._loadData();
-      }.bind(this),5000);
+       // this._loadData();
+      }.bind(this),30000);
     },(err)=>{
       setTimeout(function(){
-        this._loadData();
-      }.bind(this),5000);
+       // this._loadData();
+      }.bind(this),3000);
     });
   }
 

@@ -45,7 +45,8 @@ export class CheckoutPage implements OnInit {
   }
 
   process() {
-    this.parking.checkout(this.businessId, this.checkout.checkin).subscribe((data) => {
+    debugger;
+    this.parking.checkout(this.businessId, this.checkout.checkinid).subscribe((data) => {
       this.viewCtrl.dismiss(true);
     }, (error) => {
       console.log(error.error.code)

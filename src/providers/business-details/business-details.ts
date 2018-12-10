@@ -12,8 +12,12 @@ export class BusinessDetailsProvider {
     console.log('Hello BusinessDetailsProvider Provider');
   }
 
-
   getDashboard(id) {
+    return this.http.get(appConfig.apiUrl + `/dashboard/${id}`);
+  }
+
+  
+  getHistory(id) {
     return this.http.get(appConfig.apiUrl + `/dashboard/${id}/history`);
   }
 
