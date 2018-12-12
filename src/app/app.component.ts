@@ -38,11 +38,10 @@ export class MyApp {
     this.events.subscribe("user:loggedin", () => {
       this.load();
     });
-    
+
   }
 
   load(){
-    debugger;
     const currentUser = getFromLocalStorage('VB_USER');
     if(currentUser) this.clients = currentUser.clients;
   }

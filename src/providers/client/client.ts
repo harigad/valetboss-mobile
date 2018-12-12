@@ -16,14 +16,14 @@ export class ClientProvider {
     console.log('Hello ClientProvider Provider');
   }
 
-  saveClient(id, body){
+  saveClient(body){
     const params = new HttpParams()
         .set('name', body.name)
         .set('address', body.address)
         .set('base', body.base)
         .set('tip', body.tip)
         .set('min_ahead', body.min_ahead)
-    return this.http.put(appConfig.apiUrl + `/admin/client/${id}`, params);
+    return this.http.post(appConfig.apiUrl + `/admin/client`, params);
   }
 
   getClient(id) {

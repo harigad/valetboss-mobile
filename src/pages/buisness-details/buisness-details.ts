@@ -13,6 +13,7 @@ export class BuisnessDetailsPage {
   public detailses = [];
   public business: any = {};
   public client = [];
+  searchHistory:any = [];
 
   constructor(
       public navCtrl: NavController,
@@ -25,6 +26,7 @@ export class BuisnessDetailsPage {
     this.business = this.navParams.get('business')
     this.client = this.business;
     this._loadData();
+    // this.searchHistory = this.detailses;
   }
 
   showDate(i){
@@ -48,10 +50,21 @@ export class BuisnessDetailsPage {
 
   _loadData(){
     this.bs.getHistory(this.business.id).subscribe((res: any[]) => {
-      this.detailses = res;
+      this.detailses = this.searchHistory = res;
     },(err)=>{
-     
+
     });
+  }
+
+  onInput(e) {
+    let mn = e.target.value;
+    this.searchHistory = this.detailses.filter((res: any) => {
+          return res.mobile.toLowerCase().indexOf(mn.toLowerCase()) > -1 ||
+              (res.ticket+'').indexOf(mn.toLowerCase()) > -1 ||
+              (res.action+'').indexOf(mn.toLowerCase()) > -1
+              ;
+        }
+    )
   }
 
 }

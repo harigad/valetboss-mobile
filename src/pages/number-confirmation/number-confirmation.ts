@@ -77,12 +77,10 @@ export class NumberConfirmationPage implements OnInit {
   }
 
   moveFocus(currentelement, nextElement,move = true) {
-    debugger;
     if (currentelement.value && move) {
       nextElement.setFocus();
     }
 
-    debugger;
     if(this.pinForm.valid){
       this.sendPin();
     }

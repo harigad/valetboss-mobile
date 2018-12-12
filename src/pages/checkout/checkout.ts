@@ -30,7 +30,6 @@ export class CheckoutPage implements OnInit {
   ) {
     this.checkout = this.navParams.get("checkout");
     this.businessId = this.navParams.get('businessId');
-    debugger;
   }
 
   ngOnInit() {
@@ -45,7 +44,6 @@ export class CheckoutPage implements OnInit {
   }
 
   process() {
-    debugger;
     this.parking.checkout(this.businessId, this.checkout.checkinid).subscribe((data) => {
       this.viewCtrl.dismiss(true);
     }, (error) => {

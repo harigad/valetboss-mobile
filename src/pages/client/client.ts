@@ -62,14 +62,14 @@ export class ClientPage {
   backHistory(){
     this.navCtrl.push(BuisnessDetailsPage, {business: this.business});
   }
-  
+
   addNewClient() {
     if (this.formClient.valid) {
       let data = this.formClient.value;
       data.base = this.business.base;
       data.tip = this.business.tip;
       data.min_ahead = this.business.min_ahead;
-      this.clientService.saveClient(this.business.id, this.formClient.value).subscribe((res: any[]) => {
+      this.clientService.saveClient(this.formClient.value).subscribe((res: any[]) => {
         this.client = res;
       }, error => {
         console.log (error.error.code)
