@@ -61,14 +61,7 @@ export class NumberConfirmationPage implements OnInit {
       setTimeout(function(){
        this.events.publish("user:loggedin");
       }.bind(this),300);
-
-      if (res.type == Array.isArray([])) {
-        this.navCtrl.push(BusinessPage);
-      } else {
-        this.navCtrl.push(BusinessesPage);
-      }
-
-
+      this.navCtrl.push(BusinessesPage);
     }, error => {
       this.wrongPin = true;
       console.log(error)

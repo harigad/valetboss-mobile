@@ -1,0 +1,37 @@
+<ion-header >
+    <ion-navbar style="padding-top:20px;">
+       <ion-buttons>
+            <button ion-button (click)="details()"  ><ion-icon name="construct"></ion-icon></button>
+      </ion-buttons>
+      <ion-title style="padding-top:15px;" >{{business.name}}</ion-title> 
+      <ion-buttons end>
+          <div class="endshift">CLOCK OUT</div>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  
+<span *ngIf="shift" >
+<ion-list style="padding-left:0px;padding-right:0px;margin-left:0px;margin-bottom:0px;padding-bottom:0px;">
+  <cell-big *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"  [callBack]="_loadData.bind(this)" [businessId]="business.id"></cell-big>
+</ion-list>
+<div style="padding-left:15px;padding-right:15px;margin-top:15px;" >
+<cell *ngFor="let item of cells; let i = index" [ind]="i" [cell]="item"  [callBack]="_loadData.bind(this)" [businessId]="business.id"  ></cell>
+</div>
+</span>
+
+</ion-content>
+<ion-footer *ngIf="shift" >
+  <ion-toolbar >
+    <div style="width:60%;display:inline-block;">
+    <div class="footer-span" style="color:#488aff;" >
+      [ {{ getReadyForPickup() }} ] READY FOR PICKUP
+    </div>
+    <div class="footer-span">
+      [ {{ cells.length }} ] PARKED
+    </div>
+  </div>
+    <button class="new-check" (click)="newCheckin()" ion-button style="float: right;"><b style="color:#fff;">+ NEW CHECKIN</b></button>
+  </ion-toolbar>
+</ion-footer>

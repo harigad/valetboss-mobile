@@ -4,8 +4,21 @@ page-checkout {
     padding-top:100px;
   }
 
+  .cancel-check {
+    color:#990000;
+  }
+
   .bg .unpaid .scroll-content {
     background-color:  #a8352d;
+  }
+
+  .even {
+    background-color:#999;color:#fff;
+  }
+  ._header {
+    text-align:center;
+    padding-top:5px;padding-bottom:5px;background-color:#222;color:#fff;
+    font-weight:bold;
   }
 
   .bg.ready-unpaid {
@@ -16,15 +29,11 @@ page-checkout {
     background-color: #488aff;
   }
 
-    .toolbar-background{
-      background: #752222;
-    }
+   
   ion-title{
     .toolbar-title{
       letter-spacing: 4px;
       color: #fff;
-      font-weight: bold;
-      font-size: 20px;
     }
   }
   .checkout{

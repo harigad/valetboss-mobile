@@ -26,6 +26,10 @@ export class ClientProvider {
     return this.http.post(appConfig.apiUrl + `/admin/client`, params);
   }
 
+  getClients() {
+    return this.http.get(appConfig.apiUrl + `/clients/`);
+  }
+
   getClient(id) {
     return this.http.get(appConfig.apiUrl + `/admin/client/${id}`);
   }

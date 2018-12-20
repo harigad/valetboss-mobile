@@ -1,44 +1,24 @@
 page-client {
-  .toolbar{
-    .toolbar-background{
-      background: #333333;
-    }
-    ion-title{
-      .toolbar-title{
-        letter-spacing: 2px;
-        color: grey;
-        font-weight: normal;
-      }
-    }
-    .save-check{
-      float: right;
-      background: none;
-      letter-spacing: 3px;
-    }
-    .back-btn{
-      background: none;
-      letter-spacing: 3px;
-      z-index: 99999;
-    }
-  }
+  
   .new-client{
     ion-input{
-      border-bottom: 4px solid #252222;
+      border-bottom: 4px solid #999;
       .text-input{
+        color:#fff;
         text-align: left;
         letter-spacing: 2px;
         margin: 12px 0;
         padding-left: 4px;
       }
       ::placeholder{
-        color: #ada6a6;
+        color: #fff;
       }
     }
     .inputName{
       margin-bottom: 15px;
     }
     .placeCss{
-      background: #252222;
+      background: #999;
       border-radius: 4px;
       border: none;
       padding-left: 11px;

@@ -1,5 +1,10 @@
 <ion-header>
-  <ion-navbar> <ion-title>History</ion-title> </ion-navbar>
+  <ion-navbar> <ion-title>SHIFT REPORT</ion-title> 
+<ion-buttons *ngIf="user.role !== 1" end>
+        <div class="endshift">END SHIFT</div>
+</ion-buttons>
+
+</ion-navbar>
   <ion-searchbar class="searchbar"
   [(ngModel)]="myInput"
   [showCancelButton]="shouldShowCancel"
@@ -9,22 +14,55 @@
 </ion-header>
 
 <ion-content>
+
+
+<div class="details" *ngIf="user.role == 1 && myInput.length == 0" >
+    <div style="margin-top:10px;margin-bottom:10px;">Summary:</div>
+
+  <ion-grid style="background: #dedede;border-radius: 4px;">
+    <ion-row>
+      <ion-col style="text-align:right;">Total Vehicles: </ion-col>
+      <ion-col>{{business.total || 0}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col style="text-align:right;">Parked: </ion-col>
+        <ion-col>{{business.parked || 0}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col style="text-align:right;">Requested: </ion-col>
+        <ion-col>{{business.requested || 0}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col style="text-align:right;">Waiting: </ion-col>
+        <ion-col>{{business.waiting || 0}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col style="text-align:right;">Fee : </ion-col>
+        <ion-col>{{(business.base || 0)  | currency}}</ion-col>
+    </ion-row>
+    <ion-row>
+          <ion-col style="text-align:right;">Tip: </ion-col>
+          <ion-col>{{(business.tip || 0)  | currency}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style="margin-top:10px;margin-bottom:10px;">Employees: {{business.employees || 0}}
+      <p (click)="user(emp)" *ngFor="let emp of employees">{{emp.name}} : {{ emp.start | date: 'shortTime' }}  - {{ emp.end? (business.end | date: 'shortTime') : " NOW " }}</p>
+   </div>
+</div>
+<div style="padding-left:10px;margin-top:10px;margin-bottom:10px;">History:</div>
     <ion-grid style="padding:0px;">
         <span *ngFor="let detail of searchHistory;let i = index;" >
-        <ion-row *ngIf="showDate(i)"  class="header" >
-          <ion-col>{{ showDate(i) }}</ion-col>
-        </ion-row>
-
-        <ion-row style="padding-top:10px;padding-bottom:10px;" [ngClass]="{ 'even': i%2 == 0, 'odd': i%2 == 1}" >
+        <ion-row (click)="go(detail)" style="padding-top:10px;padding-bottom:10px;" [ngClass]="{ 'even': i%2 == 0, 'odd': i%2 == 1}" >
             <ion-col style="text-align:center;" >{{ detail.created | amDateFormat: "h:mm a"  }}</ion-col>
             <ion-col style="text-align:center;">#{{ detail.ticket }}</ion-col>
             <ion-col style="text-align:center;">
               <span *ngIf="detail.action==1" >parked</span>
-              <span *ngIf="detail.action==3" >requested</span>
-              <span *ngIf="detail.action==4" >released</span>
+              <span *ngIf="detail.action==10" >requested</span>
+              <span *ngIf="detail.action==20" >released</span>
+              <span *ngIf="detail.action==25" >clock in</span>
+              <span *ngIf="detail.action==26" >clock out</span>
             </ion-col>
-            <ion-col><span *ngIf="detail.base || detail.tip" >{{detail.base/100 + detail.tip/100 | currency}}</span></ion-col>
-          <ion-col style="text-align:center;">{{ detail.mobile }}</ion-col>
+          <ion-col style="text-align:center;">{{ detail.name }}</ion-col>
         </ion-row>
       </span>
     </ion-grid>

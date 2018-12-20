@@ -1,16 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title>Vallet Boss</ion-title>
+    <button  *ngIf="user.role == 1" ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>SHIFTS</ion-title>
+    <ion-buttons end>
+        <button *ngIf="user.role == 1" ion-button (click)="add()"  ><ion-icon name="add" style="font-size:2.0em;"  ></ion-icon></button>
+       </ion-buttons>
   </ion-toolbar>
+  <ion-searchbar class="searchbar"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
+
 </ion-header>
 
 <ion-content #content padding>
   <div
-    (click)="pushBis(business)" *ngFor="let business of businesses" class="clutch-bar">
+    (click)="pushBis(business)" *ngFor="let business of searchHistory" class="clutch-bar"  [ngClass]="{ 'started': business.end == null, 'stopped': business.end !== null }" >
     <h3><strong>{{ business.name }}</strong></h3>
-    <span>Parked: {{ business.parked }}</span>
-    <span>Ready to Pick Up: {{ business.pickedup }}</span>
-    <span>Online since {{ business.onlineTime }} </span>
+    <span style="font-size:0.7em;font-weight:bold;" >{{ business.start | date: 'short' }}  - {{ business.end? (business.end | date: 'short') : " IN PROGRESS " }}</span>
   </div>
 </ion-content>

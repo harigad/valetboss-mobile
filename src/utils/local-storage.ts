@@ -22,5 +22,6 @@ export function setToLocalStorage(key: string, data: any): void {
 }
 
 export function clearLocalStorage() {
+  debugger;
   localStorage.clear();
 }

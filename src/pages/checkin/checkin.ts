@@ -24,7 +24,8 @@ export class CheckinPage {
   public ticket;
   public car;
   public errorCode:boolean = false;
-  public id;
+  public client;
+  public shift;
   public checkin = [];
 
   constructor
@@ -38,7 +39,8 @@ export class CheckinPage {
       mobile: ['', Validators.required],
       ticket: ['', Validators.required]
     });
-    this.id = this.navParams.get('id');
+    this.client = this.navParams.get('client');
+    this.shift = this.navParams.get('shift');
   }
 
   ionViewDidLoad() {
@@ -56,7 +58,7 @@ export class CheckinPage {
       checkin.ticket = this.formCheckin.controls['ticket'].value;
       checkin.car = null;//this.formCheckin.controls['car'].value;
 
-      this.parkingService.addCheckin(this.id, this.formCheckin.value).subscribe((res: any[]) => {
+      this.parkingService.addCheckin(this.client, this.shift, this.formCheckin.value).subscribe((res: any[]) => {
         this.checkin = res;
         this.viewCtrl.dismiss(true);
       }, error => {

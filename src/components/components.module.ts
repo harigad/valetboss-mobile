@@ -6,13 +6,16 @@ import {MenuComponent} from "./menu/menu";
 import {IonicModule} from "ionic-angular";
 import {CellBigComponent} from './cell-big/cell-big';
 import {PipesModule} from "../pipes/pipes.module";
+import { BusinessComponent } from './business/business';
 
 @NgModule({
   declarations: [CellComponent, MenuComponent,
-    CellBigComponent],
+    CellBigComponent,
+    BusinessComponent],
   imports: [CommonModule, MomentModule, IonicModule, PipesModule],
   exports: [CellComponent, CommonModule, MomentModule, MenuComponent,
-    CellBigComponent, PipesModule]
+    CellBigComponent, PipesModule,
+    BusinessComponent]
 })
 export class ComponentsModule {
 }

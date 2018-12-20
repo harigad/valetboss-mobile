@@ -4,8 +4,9 @@ import {AuthProvider} from "../../providers/auth";
 import {NumberConfirmationPage} from '../number-confirmation/number-confirmation'
 import {getFromLocalStorage} from "../../utils/local-storage";
 import {BusinessesPage} from "../businesses/businesses";
+import {BusinessPage} from "../business/business";
 
-
+import {setToLocalStorage} from '../../utils/local-storage'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -23,13 +24,15 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    const currentUser = getFromLocalStorage('VB_USER');
+    let currentUser = getFromLocalStorage('VB_USER');
     if(currentUser && currentUser.token){
-        this.navCtrl.setRoot(BusinessesPage,{},{animate:false});
+        this.authProvider.refresh().subscribe((user: any) => {
+            setToLocalStorage("VB_USER",user);
+            this.navCtrl.setRoot(BusinessesPage,{},{animate:false});
+        });
     }else{
       this.ready = true;
     }
-
   }
 
   onChange($event){

@@ -1,14 +1,17 @@
 
 <ion-menu type="overlay" id="mainMenu" [content]="content" [swipeEnabled]="false" >
   <ion-header>
-    <ion-toolbar> <ion-title> Vallet Boss </ion-title> </ion-toolbar>
+    <ion-toolbar> <ion-title> Valet Boss  </ion-title> </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item  *ngFor="let client of clients" (click)="openPage(client)">{{client.name}}
-          <button ion-button outline item-end  (click)="edit($event,client)" >edit</button>
+      <ion-item detail-push (click)="usersPage()">
+          <ion-icon name="contact"><span style="font-size:0.8em;margin-left:10px;position: relative;top:-1px;" >TEAM</span></ion-icon>
       </ion-item>
-      <ion-item (click)="newClient()">+ new client</ion-item>
+      <ion-item detail-push (click)="clientsPage()"  >
+          <ion-icon name="car"><span style="font-size:0.8em;margin-left:10px;position: relative;top:-1px;" >CLIENTS</span></ion-icon>
+      </ion-item>
+     
     </ion-list>
   </ion-content>
 </ion-menu>

@@ -1,0 +1,18 @@
+<ion-header>
+      <ion-navbar>
+        <ion-title>
+          CLIENTS
+        </ion-title>
+        <ion-buttons end>
+        <button  (click)="add()" class="header_btn">
+          <ion-icon name="add" style="font-size:3.0em;" ></ion-icon>
+        </button>
+        </ion-buttons>
+      </ion-navbar>
+</ion-header>
+
+<ion-content #content padding>
+    <div (click)="edit(client)" *ngFor="let client of clients" class="clutch-bar"  >
+      <h3><strong>{{ client.name }}</strong></h3>
+    </div>
+</ion-content>

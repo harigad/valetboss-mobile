@@ -28,9 +28,9 @@ export class CellBigComponent {
   }
 
   del(e) {
-    if(e._openAmount < -300){
+    if(e._openAmount < -200){
           this.cell.action = 4;
-          this.parking.checkout(this.businessId, this.cell.checkin).subscribe((data) => {
+          this.parking.checkout(this.cell.shift, this.cell.checkin).subscribe((data) => {
             this.callBack();
           });
     }

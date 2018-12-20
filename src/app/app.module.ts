@@ -11,6 +11,10 @@ import {PipesModule} from "../pipes/pipes.module";
 import {AuthProvider} from "../providers/auth";
 import {NumberConfirmationPageModule} from "../pages/number-confirmation/number-confirmation.module";
 import {BusinessPageModule} from "../pages/business/business.module";
+import {EmployeesPageModule} from "../pages/employees/employees.module";
+import {ShiftPageModule} from "../pages/shift/shift.module";
+import {ClientsPageModule} from "../pages/clients/clients.module";
+import {UserPageModule} from "../pages/user/user.module";
 import {ParkingProvider} from "../providers/parking/parking";
 import {PingvaletPageModule} from "../pages/businesses/businesses.module";
 import {BuisnessDetailsPageModule} from "../pages/buisness-details/buisness-details.module";
@@ -21,6 +25,7 @@ import { CheckinPageModule } from "../pages/checkin/checkin.module";
 import { CheckoutPageModule } from "../pages/checkout/checkout.module";
 import { ClientPageModule } from "../pages/client/client.module";
 import { ClientProvider } from '../providers/client/client';
+import { UserProvider } from '../providers/user/user';
 
 
 
@@ -33,8 +38,12 @@ import { ClientProvider } from '../providers/client/client';
     HttpClientModule,
     NumberConfirmationPageModule,
     BusinessPageModule,
+    EmployeesPageModule,
+    ClientsPageModule,
+    UserPageModule,
     PingvaletPageModule,
     BuisnessDetailsPageModule,
+    ShiftPageModule,
     CheckinPageModule,
     CheckoutPageModule,
     ClientPageModule
@@ -51,6 +60,7 @@ import { ClientProvider } from '../providers/client/client';
     BusinessDetailsProvider,
     {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true},
     ClientProvider,
+    UserProvider,
   ],
   exports: []
 })

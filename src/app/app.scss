@@ -21,6 +21,19 @@
 
 
 .scroll-content, ion-toolbar .toolbar-background, ion-toolbar .toolbar-title, ion-toolbar button, ion-footer, ion-item.item-md{
-  background: #333;
-  color:  ghostwhite !important;
+  background: #fff;
+  color:#666 !important;
 }
+
+.toolbar-title-ios {
+  color: #666;  background: #fff;
+}
+
+.toolbar-background {
+  background: #fff;
+}
+
+.searchbar {
+  background-color:#f1f1f1;
+}
+

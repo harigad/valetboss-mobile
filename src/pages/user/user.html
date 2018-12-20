@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar>
+      <button (click)="cancel()" class="cancel-check" ion-button><span style="color:#fff;">cancel</span></button>
+      <ion-title>CHECKIN</ion-title>
+      <button (click)="update()" class="save-check" ion-button><span style="color:#fff;">save</span></button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <div class="new-checkin">
+      <form [formGroup]="formCheckin" action="" method="post">
+        <ion-input formControlName="mobile" required placeholder="enter mobile number"  maxlength="10"></ion-input>
+        <ion-input formControlName="name" required placeholder="enter name" ></ion-input>
+        <p class="err-filed" *ngIf="errorCode">All fields are required *</p>
+      </form>
+   
+          <ion-item class="ion-item">
+            <ion-label>ADMIN </ion-label>
+            <ion-toggle [(ngModel)]="admin"></ion-toggle>
+          </ion-item>
+       
+    </div>
+   </ion-content>
+  

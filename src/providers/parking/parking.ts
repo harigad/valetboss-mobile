@@ -14,19 +14,15 @@ export class ParkingProvider {
     return this.http.get(appConfig.apiUrl + `/cells`);
   }
 
-  addCheckin(id, body){
+  addCheckin(id, shift, body){
     const params = new HttpParams()
         .set('mobile', body.mobile)
-        .set('ticket', body.ticket)
-        .set('car', null);
-
-    return this.http.post(appConfig.apiUrl + `/dashboard/${id}/checkin`, params);
+        .set('ticket', body.ticket);
+    return this.http.post(appConfig.apiUrl + `/shifts/${shift}/checkin`, params);
   }
 
-  checkout(businessId,checkin){
-    const params = new HttpParams()
-        .set('checkin', checkin)
-    return this.http.post(appConfig.apiUrl + `/dashboard/${businessId}/checkout`, params);
+  checkout(shift, checkin){
+    return this.http.post(appConfig.apiUrl + `/shifts/${shift}/checkout/${checkin}`, {});
   }
 }
 

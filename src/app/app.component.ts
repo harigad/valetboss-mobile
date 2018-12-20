@@ -9,6 +9,11 @@ import {HomePage} from "../pages/home/home";
 import {ClientPage} from "../pages/client/client";
 import {BusinessPage} from "../pages/business/business";
 
+import {EmployeesPage} from "../pages/employees/employees";
+import {ClientsPage} from "../pages/clients/clients";
+
+import {BusinessDetailsProvider} from "../providers/business-details/business-details";
+
 @Component({
   templateUrl: "app.html"
 })
@@ -24,26 +29,19 @@ export class MyApp {
       statusBar: StatusBar,
       splashScreen: SplashScreen,
       public menuCtrl: MenuController,
-      public events: Events
+      public events: Events,
+      public ds: BusinessDetailsProvider
 
   ) {
     platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.load();
     });
 
-    this.events.subscribe("user:loggedin", () => {
-      this.load();
+    this.events.subscribe("clients:loaded", (clients) => {
+      this.clients = clients;
     });
 
-  }
-
-  load(){
-    const currentUser = getFromLocalStorage('VB_USER');
-    if(currentUser) this.clients = currentUser.clients;
   }
 
   edit(e,client){
@@ -56,6 +54,16 @@ export class MyApp {
     }else{
       this.nav.push(ClientPage,{business:client});
     }
+    this.menuCtrl.close();
+  }
+
+  usersPage(){
+    this.nav.push(EmployeesPage);
+    this.menuCtrl.close();
+  }
+
+  clientsPage(){
+    this.nav.push(ClientsPage);
     this.menuCtrl.close();
   }
 

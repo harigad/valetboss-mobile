@@ -1,9 +1,10 @@
 <ion-header>
-  <ion-toolbar>
-    <button (click)="back()" class="back-btn" ion-button>back</button>
+  <ion-navbar>
     <ion-title>{{business.name || "New Client"}} </ion-title>
+    <ion-buttons end>
     <button (click)="addNewClient()" class="save-check" ion-button>save</button>
-  </ion-toolbar>
+  </ion-buttons>
+  </ion-navbar>
 </ion-header>
 
 
@@ -20,7 +21,7 @@
       <ion-label>Default Tip : {{business.tip | currency }}</ion-label>
       <ion-range min="1" max="10" step="1" snaps="true" color="primary" [(ngModel)]="business.tip" ></ion-range>
 
-      <ion-label>Max Cars Requests : {{business.min_ahead}}</ion-label>
+      <ion-label>Max Car Requests : {{business.min_ahead}}</ion-label>
       <ion-range min="5" max="100" step="5" snaps="true" color="primary" [(ngModel)]="business.min_ahead" ></ion-range>
 
       <p class="err-filed" *ngIf="errorCode">All fields are required *</p>

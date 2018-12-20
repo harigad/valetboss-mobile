@@ -6,10 +6,19 @@ page-businesses {
       letter-spacing: 4px;
     }
   }
+
+  .started {
+    background: #488aff;
+  }
+
+  .stopped {
+    background: #777;
+  }
+  
   .clutch-bar {
     width: 100%;
     text-align: center;
-    background: #488aff;
+    
     border-radius: 4px;
     padding-bottom: 8px;
     padding-top: 16px;
@@ -24,7 +33,7 @@ page-businesses {
     span {
       letter-spacing: 2px;
       font-weight: 100;
-      display: block;
+   
       padding: 4px 0;
     }
   }

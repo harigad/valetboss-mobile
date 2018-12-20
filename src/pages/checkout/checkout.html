@@ -1,14 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+      <button (click)="cancel()" class="cancel-check" >cancel</button>
+      <ion-title>DETAILS</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
-  <div class="bg" [ngClass]="{ 'unpaid': checkout?.action == 1, 'ready-unpaid': checkout?.action == 2, 'ready-paid': checkout?.action == 3}" >
-  <div class="checkout" *ngIf="checkout" >
-    <span class="cell-num">#{{ checkout.ticket }}</span>
-    <span class="cell-mobile">{{ checkout.mobile | pipesPhone }}</span>
-    <span class="date">{{ checkout.created | amDateFormat: "LT"  }}</span>
-  </div>
-  <div class="check-btn">
-    <button (click) = "process()" class="checkout"  style="box-shadow: 0px 0px 16px #003bd2;" ion-button>CHECKOUT</button>
-    <button (click) = "cancel()" class="cancel" ion-button>cancel</button>
-  </div>
+    <div class="bg" [ngClass]="{ 'unpaid': checkout?.action == 1, 'ready-unpaid': checkout?.action == 2, 'ready-paid': checkout?.action == 3}" >
+        <div class="checkout" *ngIf="checkout" >
+          <span class="cell-num">#{{ checkout.ticket }}</span>
+          <span class="cell-mobile">{{ checkout.mobile | pipesPhone }}</span>
+        </div>
+   
+<div style="padding:10px;padding-bottom:0px;" >History:</div>
+<ion-grid style="padding:0px;margin-top:20px;">
+    <span *ngFor="let detail of history;let i = index;" >
+    <ion-row style="padding-top:10px;padding-bottom:10px;" [ngClass]="{ 'even': i%2 == 0, 'odd': i%2 == 1}" >
+        <ion-col style="text-align:center;" >{{ detail.created | amDateFormat: "h:mm a"  }}</ion-col>
+        <ion-col style="text-align:center;">#{{ detail.ticket }}</ion-col>
+        <ion-col style="text-align:center;">
+          <span *ngIf="detail.action==1" >parked</span>
+          <span *ngIf="detail.action==10" >requested</span>
+          <span *ngIf="detail.action==20" >released</span>
+        </ion-col>
+        <ion-col><span *ngIf="detail.base || detail.tip" >{{detail.base/100 + detail.tip/100 | currency}}</span></ion-col>
+    </ion-row>
+  </span>
+</ion-grid>
 </div>
 </ion-content>
+<ion-footer>
+    <ion-list *ngIf="checkout.action < 20" style="background-color:#990000;margin-bottom:0px;">
+        <ion-item-sliding   #item>
+        <ion-item style="background-color:#488aff;color:#fff;padding-top:20px;padding-bottom:20px;">
+          SLIDE TO CHECKOUT >
+        </ion-item>
+        <ion-item-options (ionSwipe) = "del($event)" style="background-color:#990000;" side="left">
+            <button  style="background-color:#990000;" ion-button >
+              checkout
+            </button>
+        </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+</ion-footer>

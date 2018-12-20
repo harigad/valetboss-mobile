@@ -12,13 +12,25 @@ export class BusinessDetailsProvider {
     console.log('Hello BusinessDetailsProvider Provider');
   }
 
-  getDashboard(id) {
-    return this.http.get(appConfig.apiUrl + `/dashboard/${id}`);
+  getDashboard(shift,start=null,client=null) {
+      if(start){
+        return this.http.post(appConfig.apiUrl + `/shifts/start/${client}`,{});
+      }else{
+        return this.http.get(appConfig.apiUrl + `/shifts/${shift}`);
+      }
   }
 
   
-  getHistory(id) {
-    return this.http.get(appConfig.apiUrl + `/dashboard/${id}/history`);
+  getHistory(id,shift=null,checkin = null) {
+    if(shift){
+      return this.http.get(appConfig.apiUrl + `/shifts/history/${shift}`);
+    }else if(checkin){
+      return this.http.get(appConfig.apiUrl + `/shifts/history/checkin/${checkin}`);
+    }
+  }
+
+  getShifts(){
+    return this.http.get(appConfig.apiUrl + `/shifts/`);
   }
 
 }

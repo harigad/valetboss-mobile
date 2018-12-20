@@ -51,8 +51,8 @@ export class HttpInterceptorService implements HttpInterceptor {
                 },
                 (err: any) => {
                   if (err instanceof HttpErrorResponse) {
-
                     if (err.status === 401) {
+                      debugger;
                       clearLocalStorage();
                       // TODO: Navigate to Login
                     }
